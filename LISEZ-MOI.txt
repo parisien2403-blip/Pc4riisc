@@ -1,0 +1,18 @@
+TRIGONE PC — 4° RIISC
+======================
+
+INSTALLATION SUR LE BUREAU
+--------------------------
+  >>> Double-clic sur INSTALLER-SUR-BUREAU.vbs <<<
+
+  (Si .vbs ne s'ouvre pas : clic droit > Ouvrir avec > Microsoft Windows
+   Based Script Host)
+
+  Un raccourci « TRIGONE PC » apparait sur le bureau.
+
+UTILISATION
+-----------
+  Double-clic sur le raccourci bureau « TRIGONE PC »
+  ou sur LANCER-TRIGONE-PC.bat
+
+  Pas de serveur, pas de Node.js — ouverture directe dans le navigateur.

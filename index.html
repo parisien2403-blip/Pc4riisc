@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TRIGONE PC</title>
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="TRIGONE PC">
+<meta name="description" content="TRIGONE PC — OMR, Validation OMR et ABT. 100 % local, hors ligne.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+:root{
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);
+  --safe-right:env(safe-area-inset-right,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;min-height:100dvh;background:#fff}
+body{
+  display:flex;align-items:center;justify-content:center;
+  padding:calc(16px + var(--safe-top)) calc(14px + var(--safe-right)) calc(16px + var(--safe-bottom)) calc(14px + var(--safe-left));
+  font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+body.portal-device-pc .FOOTER-C-MOB{display:none}
+body.portal-device-pc .FOOTER-C-PC{display:inline}
+.SHELL{max-width:min(1280px,100%);width:100%;text-align:center}
+.BRAND{margin:clamp(12px,3vw,22px) auto 0;max-width:min(998px,98vw)}
+.COVER{width:100%;height:auto;margin:0 auto;display:block}
+.TAGLINE{
+  margin:clamp(-120px,-13.5vw,-64px) auto clamp(24px,5.5vw,34px);
+  padding:0 4px;
+}
+.TAGLINE .L1{
+  margin:0 0 14px;font-weight:500;
+  font-size:clamp(.8rem,3.4vw,1.05rem);
+  letter-spacing:.14em;text-transform:uppercase;
+  color:#525252;line-height:1.45;
+}
+.TAGLINE .L2{
+  margin:0;font-weight:700;
+  font-size:clamp(1.1rem,5vw,1.5rem);
+  letter-spacing:.18em;text-transform:uppercase;
+  color:#2a2a2a;
+}
+.TAGLINE .L2-O{position:relative;display:inline-block;letter-spacing:0}
+.TAGLINE .L2-TRI{
+  position:absolute;left:50%;top:52%;
+  transform:translate(-50%,-50%);
+  width:0;height:0;
+  border-left:.18em solid transparent;
+  border-right:.18em solid transparent;
+  border-top:.22em solid #1a1a1a;
+  pointer-events:none;
+}
+.PORTAL-NAV{
+  display:flex;gap:8px;margin:0 auto clamp(18px,4vw,26px);
+  width:min(440px,98vw);max-width:100%;
+}
+.PORTAL-TAB{
+  flex:1;padding:12px 10px;border:1.5px solid #d4d4d4;border-radius:10px;
+  background:#fafafa;font-weight:700;font-size:clamp(.68rem,2.8vw,.82rem);
+  letter-spacing:.06em;text-transform:uppercase;color:#444;cursor:pointer;
+  transition:.15s ease;
+}
+.PORTAL-TAB.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.PORTAL-TAB:active{transform:scale(.98)}
+.VIEW.hidden{display:none!important}
+.APP-FRAME{margin:0 auto;width:min(720px,98vw);max-width:100%;padding:0}
+.APP-BAR{
+  height:2px;width:100%;margin:0 auto;border-radius:2px;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.1) 18%,rgba(0,0,0,.32) 50%,rgba(0,0,0,.1) 82%,transparent 100%);
+}
+.APP-FRAME .APP-BAR:first-child{margin-bottom:clamp(16px,4vw,22px)}
+.APP-FRAME .APP-BAR:last-child{margin-top:clamp(16px,4vw,22px)}
+.APP-ROW{
+  display:flex;align-items:stretch;justify-content:center;gap:clamp(10px,2.4vw,18px);
+  width:100%;
+}
+.APP-TILE{
+  flex:1 1 0;min-width:0;max-width:none;
+  display:block;text-decoration:none;color:inherit;cursor:pointer;
+  border-radius:14px;padding:4px;
+  position:relative;overflow:hidden;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.APP-TILE:active{transform:scale(.97)}
+.APP-TILE img{
+  width:100%;height:auto;display:block;border-radius:10px;position:relative;z-index:0;
+  image-rendering:-webkit-optimize-contrast;
+}
+.APP-TILE-OMR{
+  border:2px solid #B8956E;
+  background:linear-gradient(165deg,#FFF9F2 0%,#F5EBDC 100%);
+  box-shadow:0 8px 24px rgba(160,120,70,.18),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.APP-TILE-VALID{
+  border:2px solid #7A9DB5;
+  background:linear-gradient(165deg,#F8FBFD 0%,#E8F0F6 100%);
+  box-shadow:0 8px 24px rgba(70,110,140,.16),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.APP-TILE-ABT{
+  border:2px solid #8FA393;
+  background:linear-gradient(165deg,#F6FAF7 0%,#E6EFE8 100%);
+  box-shadow:0 8px 24px rgba(80,120,95,.16),inset 0 1px 0 rgba(255,255,255,.9);
+}
+.SEC-PANEL{
+  margin:0 auto;width:min(720px,98vw);max-width:100%;
+  text-align:left;padding:0 2px clamp(8px,2vw,16px);
+}
+.SEC-LEAD{
+  background:linear-gradient(135deg,#f0f7ff 0%,#fff 55%);
+  border:1px solid #c8daf0;border-left:4px solid #1a4a8a;
+  border-radius:12px;padding:14px 16px;margin-bottom:14px;
+}
+.SEC-LEAD strong{display:block;font-size:.92rem;color:#1a1a1a;margin-bottom:6px;letter-spacing:.04em}
+.SEC-LEAD p{margin:0;font-size:.82rem;line-height:1.55;color:#444}
+.SEC-CARD{
+  background:#fff;border:1px solid #e5e5e5;border-left:4px solid #1a1a1a;
+  border-radius:12px;padding:14px 16px;margin-bottom:12px;
+}
+.SEC-CARD h3{
+  margin:0 0 8px;font-size:.78rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;color:#1a1a1a;
+}
+.SEC-CARD p,.SEC-CARD li{
+  margin:0 0 8px;font-size:.8rem;line-height:1.55;color:#444;
+}
+.SEC-CARD ul{margin:0 0 4px;padding-left:18px}
+.SEC-CARD li{margin-bottom:6px}
+.SEC-CARD li:last-child{margin-bottom:0}
+.SEC-CARD p:last-child{margin-bottom:0}
+.SEC-OK{
+  background:#f4faf5;border-color:#b8dfc4;border-left-color:#2e7d32;
+}
+.SEC-OK h3{color:#1b5e20}
+.SEC-FOOT{
+  font-size:.72rem;line-height:1.5;color:#777;text-align:center;
+  margin-top:8px;padding:0 6px;
+}
+.FOOTER-BAR{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:baseline;
+  gap:8px 12px;
+  width:min(720px,98vw);max-width:100%;
+  margin:clamp(20px,4vw,32px) auto 0;padding:0 4px;
+}
+.FOOTER-L,.FOOTER-R{
+  font-size:clamp(.58rem,2.2vw,.68rem);
+  line-height:1.4;color:#999;letter-spacing:.02em;
+  margin:0;
+}
+.FOOTER-L{grid-column:1;text-align:left;flex:1 1 auto;min-width:0}
+.FOOTER-C{
+  grid-column:2;
+  font-size:clamp(.58rem,2.2vw,.68rem);
+  line-height:1.4;color:#999;letter-spacing:.04em;
+  margin:0;text-align:center;white-space:nowrap;
+  font-weight:600;
+}
+.FOOTER-C-PC{display:inline}
+.FOOTER-C-MOB{display:none}
+.FOOTER-R{grid-column:3;text-align:right;flex:0 1 auto}
+.FOOTER-R button{
+  background:none;border:none;padding:0;margin:0;
+  font:inherit;color:#777;text-decoration:underline;cursor:pointer;
+}
+.FOOTER-R button:active{opacity:.7}
+
+@media (min-width:768px){
+  .SHELL{max-width:min(720px,94vw);margin:0 auto}
+  .BRAND,.TAGLINE,.PORTAL-NAV,.APP-FRAME,.SEC-PANEL{margin-left:auto;margin-right:auto}
+  .APP-FRAME,.SEC-PANEL{width:100%}
+  .FOOTER-BAR{align-items:baseline}
+  .FOOTER-R{white-space:nowrap;flex:0 0 auto}
+}
+
+@media (min-width:1024px){
+  body{
+    align-items:center;
+    padding-top:clamp(24px,4vh,40px);
+    padding-bottom:calc(52px + var(--safe-bottom));
+  }
+  .SHELL{
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;max-width:920px;width:100%;margin:0 auto;flex:1 0 auto;
+  }
+  .BRAND{width:100%;max-width:min(680px,88vw);margin:0 auto}
+  .TAGLINE{
+    width:100%;max-width:680px;
+    margin:clamp(-72px,-7vw,-44px) auto clamp(26px,3.5vw,36px)!important;
+    padding:0 8px;
+  }
+  .TAGLINE .L1,.TAGLINE .L2{text-align:center}
+  .PORTAL-NAV{width:min(440px,100%);margin:0 auto clamp(22px,3vw,30px)}
+  #VIEW-HOME:not(.hidden),#VIEW-SECURITY:not(.hidden){
+    width:100%;max-width:780px;margin:0 auto;
+  }
+  .APP-FRAME{width:100%;max-width:720px;margin:0 auto}
+  .APP-ROW{
+    gap:clamp(18px,2.2vw,28px);
+    align-items:stretch;justify-content:center;
+    padding:4px 0;max-width:680px;margin:0 auto;
+  }
+  .APP-TILE{flex:1 1 0;max-width:210px}
+  .APP-TILE:hover{transform:translateY(-4px)}
+  .APP-TILE:active{transform:translateY(-1px) scale(.99)}
+  .SEC-PANEL{
+    width:100%;max-width:780px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;
+  }
+  .SEC-LEAD,.SEC-FOOT{grid-column:1/-1}
+  .FOOTER-BAR{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    display:flex;width:100%;max-width:none;margin:0;
+    padding:10px max(20px,var(--safe-left)) calc(10px + var(--safe-bottom)) max(20px,var(--safe-right));
+    border-top:1px solid #eee;background:#fff;
+    flex-wrap:nowrap;align-items:baseline;justify-content:space-between;
+    gap:16px 24px;box-sizing:border-box;
+  }
+  .FOOTER-L{text-align:left;flex:0 1 auto;min-width:0}
+  .FOOTER-C{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%);pointer-events:none;
+  }
+  .FOOTER-R{text-align:right;flex:0 0 auto;white-space:nowrap}
+}
+
+@media (min-width:1280px){
+  .SHELL{max-width:980px}
+  .BRAND{max-width:740px}
+  .APP-ROW{max-width:720px}
+  .APP-TILE{max-width:228px}
+}
+.MODAL{
+  position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.5);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.MODAL.hidden{display:none!important}
+.MODAL-BOX{
+  background:#fff;color:#333;border-radius:16px;padding:22px 18px;max-width:360px;width:100%;
+  border-left:4px solid #1a1a1a;
+}
+.MODAL-BOX h2{margin:0 0 10px;font-size:1rem;color:#1a1a1a;text-transform:uppercase}
+.MODAL-INSTALL-LEAD{font-size:.88rem;text-align:center;margin:0 0 10px;color:#444;font-weight:600;line-height:1.45}
+.MODAL-INSTALL-TXT{font-size:.82rem;text-align:center;margin:0 0 14px;line-height:1.5;color:#555;white-space:pre-line}
+.BTN-INSTALL{
+  display:block;width:100%;padding:14px;border:none;border-radius:10px;
+  font-weight:800;font-size:.88rem;cursor:pointer;text-transform:uppercase;
+  background:#1a1a1a;color:#fff;
+}
+.BTN-INSTALL-LATER{
+  display:block;width:100%;padding:14px;border:none;border-radius:10px;margin-top:8px;
+  font-weight:700;font-size:.82rem;cursor:pointer;background:#eee;color:#333;
+}
+.BTN-PORTAIL-INSTALL{
+  display:block;width:min(440px,98vw);max-width:100%;margin:0 auto 18px;padding:12px 16px;
+  border:2px solid #1a1a1a;border-radius:10px;background:#fafafa;
+  font-weight:700;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;
+  color:#1a1a1a;cursor:pointer;text-decoration:none;text-align:center;box-sizing:border-box;
+}
+.BTN-PORTAIL-INSTALL:active{background:#eee;transform:scale(.99)}
+.INSTALL-CHEMIN{
+  display:block;margin:12px 0;padding:10px 12px;background:#f5f5f5;border-radius:8px;
+  font-family:Consolas,monospace;font-size:.72rem;word-break:break-all;text-align:left;
+  color:#333;line-height:1.45;
+}
+</style>
+</head>
+<body class="portal-device-pc">
+<div class="SHELL">
+  <div class="BRAND">
+    <img src="logo-portail.png" class="COVER" alt="TRIGONE" width="677" height="369">
+  </div>
+  <div class="TAGLINE" id="TAGLINE-HOME">
+    <p class="L1">Une seule application · Trois outils · Un seul objectif</p>
+    <p class="L2">LA MISSI<span class="L2-O">O<span class="L2-TRI" aria-hidden="true"></span></span>N</p>
+  </div>
+  <nav class="PORTAL-NAV" aria-label="Navigation portail">
+    <button type="button" class="PORTAL-TAB active" data-view="home" onclick="afficherVue('home')">Applications</button>
+    <button type="button" class="PORTAL-TAB" data-view="security" onclick="afficherVue('security')">Sécurité &amp; données</button>
+  </nav>
+  <a class="BTN-PORTAIL-INSTALL" id="LIEN-RACCOURCI-BUREAU" href="#" onclick="return ouvrirInstallateurRaccourci(event)">Raccourci bureau — mode d'emploi</a>
+  <div id="VIEW-HOME" class="VIEW">
+    <div class="APP-FRAME">
+      <div class="APP-BAR" aria-hidden="true"></div>
+      <div class="APP-ROW">
+        <a class="APP-TILE APP-TILE-OMR" href="omr/index.html" title="Créer et envoyer une demande OMR">
+          <img src="omr/logo omr.png" alt="Ordre de mise en route">
+        </a>
+        <a class="APP-TILE APP-TILE-VALID" href="omr/index.html?mode=valideur" title="Importer et signer une OMR reçue">
+          <img src="new validation omr.png" alt="Validation OMR">
+        </a>
+        <a class="APP-TILE APP-TILE-ABT" href="abt/index.html" title="Réservation prestations voyage">
+          <img src="abt/logo abt.png" alt="Réservation ABT">
+        </a>
+      </div>
+      <div class="APP-BAR" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div id="VIEW-SECURITY" class="VIEW hidden">
+    <div class="SEC-PANEL">
+      <div class="SEC-LEAD">
+        <strong>Vos données restent sur votre ordinateur</strong>
+        <p>TRIGONE PC est conçu pour un usage professionnel en régiment : <strong>aucun serveur</strong>, <strong>aucun cloud</strong>, <strong>aucun compte</strong>. Tout ce que vous saisissez (OMR, validation, réservations ABT) est enregistré <strong>uniquement sur ce PC</strong>, dans l'espace de stockage du navigateur.</p>
+      </div>
+      <div class="SEC-CARD SEC-OK">
+        <h3>Accès Validation OMR (valideur)</h3>
+        <ul>
+          <li>La tuile centrale <b>Validation OMR</b> est protégée par un <strong>code d'accès</strong> réservé aux chefs de bureau.</li>
+          <li>Le code est demandé à la première ouverture, puis <strong>mémorisé sur cet ordinateur</strong> jusqu'à verrouillage manuel.</li>
+          <li>Code par défaut : communiquez-le en interne au régiment (ex. <b>4RIISC-VISA</b>) — modifiable côté développement si besoin.</li>
+          <li>Bouton <b>Verrouiller l'accès valideur</b> dans l'app pour exiger le code à nouveau.</li>
+        </ul>
+      </div>
+      <div class="SEC-CARD SEC-OK">
+        <h3>Fonctionnement hors ligne</h3>
+        <ul>
+          <li>L'application tourne <strong>sans connexion Internet</strong> : une fois ouverte depuis le dossier TRIGONE PC, les trois outils restent utilisables hors réseau.</li>
+          <li>Aucune mise à jour ni synchronisation automatique en arrière-plan.</li>
+          <li>Idéal en cas d'absence de réseau sur site ou en déplacement.</li>
+        </ul>
+      </div>
+      <div class="SEC-CARD">
+        <h3>Où sont stockées vos données</h3>
+        <ul>
+          <li>Brouillons, bibliothèques et archives : <strong>sur ce poste</strong> (navigateur / disque local).</li>
+          <li><strong>Rien n'est transmis automatiquement</strong> vers un serveur externe, une base centralisée ou un tiers.</li>
+          <li>Pas de tracking, pas de télémétrie, pas de connexion obligatoire.</li>
+        </ul>
+      </div>
+      <div class="SEC-CARD">
+        <h3>Quand vos données quittent le PC</h3>
+        <ul>
+          <li><strong>Uniquement si vous le décidez</strong> : envoi par e-mail, export PDF, fichier <b>.omr</b> ou pièce jointe que vous choisissez vous-même.</li>
+          <li>TRIGONE ne joint pas de fichier à votre place sans action de votre part.</li>
+          <li>Vous gardez le contrôle de chaque diffusion vers le valideur, l'échelon ou le référent ABT.</li>
+        </ul>
+      </div>
+      <div class="SEC-CARD">
+        <h3>Bonnes pratiques</h3>
+        <ul>
+          <li>Verrouillez votre session Windows lorsque vous quittez le poste.</li>
+          <li>Ne videz pas les données du navigateur sans avoir exporté ou archivé vos dossiers importants.</li>
+          <li>Conservez une copie des PDF ou fichiers <b>.omr</b> envoyés si vous en avez besoin ultérieurement.</li>
+          <li>La responsabilité des données incombe au <strong>utilisateur de ce poste</strong>, comme pour tout document de travail local.</li>
+        </ul>
+      </div>
+      <p class="SEC-FOOT">TRIGONE PC · OMR · Validation OMR · ABT · Version locale — Juin 2026</p>
+    </div>
+  </div>
+  <div class="FOOTER-BAR">
+    <p class="FOOTER-L">© 2026 Germain-Pierre BOUQUET — TRIGONE · outil numérique</p>
+    <p class="FOOTER-C"><span class="FOOTER-C-MOB">Version Android / Apple</span><span class="FOOTER-C-PC">Version PC</span></p>
+    <p class="FOOTER-R">v2.0 — Juin 2026 — <button type="button" onclick="afficherVue('security')">Sécurité des données</button> · <button type="button" onclick="afficherInstructionsRaccourci()">Raccourci bureau</button> · Données stockées sur l'appareil · Hors ligne</p>
+  </div>
+</div>
+
+<div id="MODAL-INSTALL" class="MODAL hidden">
+  <div class="MODAL-BOX">
+    <h2 id="INSTALL-TITRE">Raccourci sur le bureau</h2>
+    <p id="INSTALL-LEAD" class="MODAL-INSTALL-LEAD"></p>
+    <p id="INSTALL-TEXTE" class="MODAL-INSTALL-TXT"></p>
+    <code id="INSTALL-CHEMIN" class="INSTALL-CHEMIN hidden"></code>
+    <button type="button" class="BTN-INSTALL hidden" id="BTN-LANCER-VBS" onclick="lancerVbsLocal()">Lancer l'installateur maintenant</button>
+    <button type="button" class="BTN-INSTALL-LATER" onclick="fermerModalInstall()">Fermer</button>
+  </div>
+</div>
+
+<script>
+function $(id){return document.getElementById(id);}
+
+function cheminDossierTrigone(){
+  if(location.protocol!=='file:')return '';
+  try{
+    var p=decodeURIComponent(location.pathname||'');
+    if(p.charAt(0)==='/')p=p.slice(1);
+    p=p.replace(/\//g,'\\');
+    if(/^[A-Za-z]:/.test(p))p=p.charAt(0).toUpperCase()+p.slice(1);
+    p=p.replace(/\\index\.html$/i,'');
+    return p;
+  }catch(e){return '';}
+}
+
+function texteInstructionsRaccourci(){
+  var dossier=cheminDossierTrigone();
+  var cheminVbs=dossier?dossier+'\\!! CREER RACCOURCI BUREAU.vbs':'Documents\\TRIGONE pc\\!! CREER RACCOURCI BUREAU.vbs';
+  return {
+    lead:'Le navigateur <b>ne peut pas</b> creer le raccourci tout seul (meme si une notification apparait).',
+    txt:'<b>3 etapes :</b>\n\n'+
+      '1. Fermez cette fenetre ou minimisez le navigateur\n'+
+      '2. Ouvrez le dossier ci-dessous dans l\'Explorateur Windows\n'+
+      '3. Double-cliquez le fichier :\n   <b>!! CREER RACCOURCI BUREAU.vbs</b>\n\n'+
+      'Une fenetre confirmera : « Raccourci cree sur le bureau ».\n'+
+      'Ne lancez <b>pas</b> un fichier depuis Telechargements.',
+    chemin:cheminVbs,
+    peutLancerVbs:location.protocol==='file:'
+  };
+}
+
+function afficherInstructionsRaccourci(){
+  var info=texteInstructionsRaccourci();
+  var lead=$('INSTALL-LEAD'),txt=$('INSTALL-TEXTE'),chemin=$('INSTALL-CHEMIN'),btn=$('BTN-LANCER-VBS');
+  if(lead)lead.innerHTML=info.lead;
+  if(txt)txt.innerHTML=info.txt.replace(/\n/g,'<br>');
+  if(chemin){
+    chemin.textContent=info.chemin;
+    chemin.classList.remove('hidden');
+  }
+  if(btn){
+    btn.classList.toggle('hidden',!info.peutLancerVbs);
+  }
+  $('MODAL-INSTALL').classList.remove('hidden');
+}
+
+function ouvrirInstallateurRaccourci(e){
+  if(e&&e.preventDefault)e.preventDefault();
+  afficherInstructionsRaccourci();
+  return false;
+}
+
+function lancerVbsLocal(){
+  if(location.protocol!=='file:'){
+    alert('Ouvrez d\'abord TRIGONE pc depuis le dossier Documents (double-clic index.html ou LANCER-TRIGONE-PC.bat).');
+    return;
+  }
+  window.location.href='INSTALLER-SUR-BUREAU.vbs';
+}
+
+function fermerModalInstall(){
+  $('MODAL-INSTALL').classList.add('hidden');
+}
+
+function afficherVue(vue){
+  var home=document.getElementById('VIEW-HOME');
+  var sec=document.getElementById('VIEW-SECURITY');
+  var tag=document.getElementById('TAGLINE-HOME');
+  if(!home||!sec)return;
+  home.classList.toggle('hidden',vue!=='home');
+  sec.classList.toggle('hidden',vue!=='security');
+  if(tag)tag.classList.toggle('hidden',vue!=='home');
+  document.querySelectorAll('.PORTAL-TAB').forEach(function(btn){
+    btn.classList.toggle('active',btn.getAttribute('data-view')===vue);
+  });
+  try{
+    var hash=vue==='security'?'#securite':'#accueil';
+    history.replaceState(null,'',hash);
+  }catch(e){}
+  if(vue==='security')window.scrollTo({top:0,behavior:'smooth'});
+}
+
+(function initHash(){
+  try{
+    if(location.hash==='#securite')afficherVue('security');
+  }catch(e){}
+})();
+
+if('serviceWorker' in navigator&&(location.protocol==='http:'||location.protocol==='https:')){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('./sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
