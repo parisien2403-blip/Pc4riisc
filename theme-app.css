@@ -1,0 +1,172 @@
+/* TRIGONE PC — thème quadrillage réseau + filigrane logo (partagé OMR / Validation / ABT) */
+
+body.trigone-grid{
+  background:linear-gradient(165deg,var(--net-top,#fff) 0%,var(--net-base,#f5f5f5) 100%);
+  background-attachment:fixed;
+  position:relative;
+}
+
+/* —— Grille réseau plein écran —— */
+body.trigone-grid::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--net-fine,rgba(0,0,0,.06)) 1px,transparent 1px),
+    linear-gradient(90deg,var(--net-fine,rgba(0,0,0,.06)) 1px,transparent 1px),
+    linear-gradient(var(--net-major,rgba(0,0,0,.1)) 1px,transparent 1px),
+    linear-gradient(90deg,var(--net-major,rgba(0,0,0,.1)) 1px,transparent 1px);
+  background-size:32px 32px,32px 32px,96px 96px,96px 96px;
+  mask-image:radial-gradient(ellipse 98% 90% at 50% 12%,#000 15%,transparent 78%);
+}
+body.trigone-grid::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 0 0,var(--net-node,rgba(0,0,0,.15)) 2px,transparent 2px),
+    linear-gradient(135deg,transparent 49.5%,var(--net-link,rgba(0,0,0,.05)) 49.5%,var(--net-link,rgba(0,0,0,.05)) 50.5%,transparent 50.5%);
+  background-size:96px 96px,48px 48px;
+  mask-image:radial-gradient(ellipse 92% 80% at 50% 20%,#000 10%,transparent 70%);
+  opacity:.8;
+}
+
+/* —— Filigrane logo PNG —— */
+.TRIGONE-LOGO-BG{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:var(--app-logo-url,none);
+  background-repeat:no-repeat;
+  background-position:center 20%;
+  background-size:min(400px,78vw) auto;
+  opacity:var(--app-logo-opacity,.055);
+  mask-image:radial-gradient(ellipse 65% 50% at 50% 24%,#000 20%,transparent 75%);
+}
+
+/* —— Surfaces (cartes) — quadrillage léger + accent —— */
+.trigone-surface,
+body.trigone-grid .CARD:not(#P0),
+body.trigone-grid .P0-SHELL:not(.P0-SHELL-VIP),
+body.trigone-grid .HERO-INNER,
+body.trigone-grid .envoi-val-card{
+  position:relative;overflow:hidden;
+  border-top:2px solid var(--shell-accent,var(--tg-accent-light,#888))!important;
+  box-shadow:var(--tg-shadow,0 10px 40px rgba(0,0,0,.06)),inset 0 1px 0 rgba(255,255,255,.85);
+}
+.trigone-surface::before,
+body.trigone-grid .CARD:not(#P0)::before,
+body.trigone-grid .P0-SHELL:not(.P0-SHELL-VIP)::before,
+body.trigone-grid .HERO-INNER::before,
+body.trigone-grid .envoi-val-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(var(--net-fine,rgba(0,0,0,.05)) 1px,transparent 1px),
+    linear-gradient(90deg,var(--net-fine,rgba(0,0,0,.05)) 1px,transparent 1px);
+  background-size:20px 20px;
+  opacity:.45;
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 6%,#000 94%,transparent 100%);
+}
+.trigone-surface > *,
+body.trigone-grid .CARD:not(#P0) > *,
+body.trigone-grid .P0-SHELL:not(.P0-SHELL-VIP) > *,
+body.trigone-grid .HERO-INNER > *,
+body.trigone-grid .envoi-val-card > *{
+  position:relative;z-index:1;
+}
+
+/* —— En-têtes de page —— */
+body.trigone-grid .card-head,
+body.trigone-grid .CARD-HDR,
+body.trigone-grid .APP-HDR{
+  border-bottom:1px solid var(--tg-border,#e8e8e8);
+}
+body.trigone-grid .card-head h2,
+body.trigone-grid .HDR-TITLE,
+body.trigone-grid .CARD-TITLE{
+  letter-spacing:.06em;
+}
+body.trigone-grid .section-title,
+body.trigone-grid .SECT-TITLE,
+body.trigone-grid .biblio-section-title{
+  color:var(--shell-accent,var(--tg-accent-light,#888));
+  border-bottom-color:rgba(0,0,0,.08);
+  letter-spacing:.14em;
+}
+
+/* —— Listes & blocs —— */
+body.trigone-grid .list-item,
+body.trigone-grid .dest-val-item,
+body.trigone-grid .TRIP-CARD,
+body.trigone-grid .SERVICE-CARD,
+body.trigone-grid .ROUTE-CARD,
+body.trigone-grid .RECAP,
+body.trigone-grid .PARAM-CARD,
+body.trigone-grid .DRAFT-BANNER,
+body.trigone-grid .RESUME-SUM{
+  border-left:2px solid var(--shell-accent,var(--tg-accent-light,#888));
+}
+
+/* —— Champs — focus accent —— */
+body.trigone-grid .field input:focus,
+body.trigone-grid .field select:focus,
+body.trigone-grid .field textarea:focus,
+body.trigone-grid input:focus,
+body.trigone-grid select:focus,
+body.trigone-grid textarea:focus{
+  outline:none;border-color:var(--shell-accent,var(--tg-accent-light,#888));
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--shell-accent,#888) 22%,transparent);
+}
+
+/* —— Onglets actifs —— */
+body.trigone-grid .CHOICE-TAB.active,
+body.trigone-grid .envoi-val-tab.active,
+body.trigone-grid .STEP-ITEM.on .STEP-DOT{
+  border-color:var(--shell-accent,var(--tg-accent-light,#888));
+}
+body.trigone-grid .envoi-val-tab.active{
+  color:var(--shell-accent,var(--tg-accent-light,#888));
+  border-bottom-color:var(--shell-accent,var(--tg-accent-light,#888));
+}
+body.trigone-grid .sign-recap,
+body.trigone-grid .profil-resume,
+body.trigone-grid .envoi-apercu-block,
+body.trigone-grid .notice-plateform,
+body.trigone-grid .HERO-SEARCH{
+  border-left:2px solid var(--shell-accent,var(--tg-accent-light,#888));
+}
+body.trigone-grid .BTN-ACCUEIL,
+body.trigone-grid .BTN-PRI{
+  box-shadow:0 6px 20px color-mix(in srgb,var(--shell-accent,#888) 18%,transparent);
+}
+
+/* —— Mode sombre —— */
+body.dark-mode.trigone-grid,
+body.dark.trigone-grid{
+  --net-fine:rgba(255,255,255,.05);
+  --net-major:rgba(255,255,255,.09);
+  --net-node:rgba(255,255,255,.12);
+  --net-link:rgba(255,255,255,.04);
+  --app-logo-opacity:.035;
+  background:linear-gradient(165deg,#1a1a1a 0%,#141414 100%);
+}
+body.dark-mode.trigone-grid::after,
+body.dark.trigone-grid::after{opacity:.45}
+
+body.dark-mode.trigone-grid .CARD:not(#P0)::before,
+body.dark.trigone-grid .CARD:not(#P0)::before,
+body.dark-mode.trigone-grid .HERO-INNER::before,
+body.dark.trigone-grid .HERO-INNER::before{
+  opacity:.2;
+}
+
+/* —— Thème ABT (vert) —— */
+body.app-abt{
+  --net-base:#E6EFE8;--net-top:#F6FAF7;
+  --net-fine:rgba(143,163,147,0.09);--net-major:rgba(143,163,147,0.16);
+  --net-node:rgba(143,163,147,0.24);--net-link:rgba(143,163,147,0.08);
+  --shell-accent:#8FA393;
+  --app-logo-url:url('abt/logo abt.png');
+}
+
+/* —— Thème OMR demandeur (or) —— */
+body.app-omr{
+  --app-logo-url:url('omr/logo omr.png');
+}
+body.app-validation{
+  --app-logo-url:url('new validation omr.png');
+}

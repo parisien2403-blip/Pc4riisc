@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ABT — Voyages · 4° RIISC</title>
+<meta name="theme-color" content="#E6EFE8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ABT">
+<meta name="application-name" content="ABT">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png?v=28">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=28">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../theme-app.css">
+<style>
+:root{
+  --tg-ink:#1a1a1a;--tg-muted:#525252;--tg-soft:#737373;
+  --tg-accent:#6B8F7A;--tg-accent-light:#8FA393;
+  --tg-surface:#fff;--tg-surface-alt:#fafafa;--tg-border:#e8e8e8;
+  --tg-shadow:0 10px 40px rgba(0,0,0,.06);
+  --app-bg:linear-gradient(165deg,#F6FAF7 0%,#E6EFE8 100%);
+  --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);
+  --navy:var(--tg-ink);--navy-mid:#2a2a2a;--navy-soft:var(--tg-accent);
+  --gold:var(--tg-accent-light);--gold-l:var(--tg-accent-light);--gold-d:var(--tg-accent);
+  --sky:var(--tg-surface-alt);--cream:#fff;--white:#fff;
+  --text:var(--tg-ink);--muted:var(--tg-muted);--line:var(--tg-border);
+  --ok:#3d6b52;--warn:#8B6914;--urgent:#9f1239;
+  --shadow:var(--tg-shadow);--shadow-sm:0 4px 16px rgba(0,0,0,.04);
+  --radius:16px;--radius-sm:12px;
+  --net-base:#E6EFE8;--net-top:#F6FAF7;
+  --net-fine:rgba(143,163,147,0.09);--net-major:rgba(143,163,147,0.16);
+  --net-node:rgba(143,163,147,0.24);--net-link:rgba(143,163,147,0.08);
+  --shell-accent:#8FA393;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{min-height:100%;min-height:100dvh;background:var(--net-base,#E6EFE8)}
+body{
+  font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+  margin:0;
+  color:var(--text);
+  line-height:1.45;padding-bottom:28px;min-height:100dvh;
+}
+.SCREEN{max-width:560px;margin:0 auto;min-height:100vh;position:relative;z-index:1}
+.HIDDEN{display:none!important}
+
+/* —— Accueil TRIGONE —— */
+#P0,#P-RESUME{
+  background:transparent;color:var(--tg-ink);
+  min-height:100dvh;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:calc(16px + var(--safe-top)) calc(16px + var(--safe-right)) calc(16px + var(--safe-bottom)) calc(16px + var(--safe-left));
+}
+.HERO-INNER{
+  position:relative;width:100%;max-width:520px;
+  border-radius:20px;padding:36px 22px 32px;
+  background:#fff;border:1px solid var(--tg-border);
+  border-top:2px solid var(--tg-accent-light);
+  box-shadow:var(--tg-shadow);
+}
+.HERO-TOP{display:none}
+.HERO-BRAND{display:none}
+.HERO-MAIN{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0}
+.welcome-logo{width:min(420px,92vw);height:auto;margin:0 auto 24px;display:block;filter:none}
+.HERO-LOGO-Wrap,.HERO-LOGO,.HERO-LOGO-VER{display:none!important}
+#P0 .HERO-MAIN h1,#P0 .HERO-MAIN .sub{display:none}
+#P-RESUME .HERO-MAIN h1{
+  font-size:.95em;font-weight:700;margin:0 0 12px;line-height:1.35;
+  max-width:360px;text-transform:uppercase;letter-spacing:.08em;color:var(--tg-ink);
+}
+#P-RESUME .HERO-MAIN .sub{font-size:.88em;color:var(--tg-muted);line-height:1.5;max-width:360px;margin:0 auto 20px}
+.HERO-SEARCH{
+  background:var(--tg-surface-alt);border-radius:var(--radius);
+  padding:18px 16px;margin:0 auto 24px;max-width:400px;width:100%;
+  box-shadow:none;border:1px solid var(--tg-border);color:var(--text);text-align:left;
+}
+.HERO-SEARCH-LBL{font-size:.68em;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.HERO-CHIPS{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.HERO-CHIP{
+  font-size:.72em;font-weight:600;padding:6px 11px;border-radius:20px;
+  background:var(--sky);color:var(--tg-ink);border:1px solid var(--line);
+}
+.HERO-CTA-ROW{display:flex;flex-direction:column;gap:10px;max-width:360px;width:100%;margin:0 auto}
+.BTN-HERO{
+  max-width:100%;padding:17px 24px;font-size:.82em;letter-spacing:.12em;
+  margin:0 auto;border-radius:12px;
+}
+.HERO-LINKS{display:flex;flex-direction:column;gap:10px;margin-top:14px;width:100%;max-width:360px}
+.HERO-LINK{
+  background:var(--tg-surface-alt);border:1.5px solid var(--tg-border);
+  color:var(--tg-ink);border-radius:12px;padding:14px 18px;
+  font-size:.78em;font-weight:600;cursor:pointer;
+  width:100%;text-align:center;letter-spacing:.04em;
+}
+.HERO-LINK:active{background:#f5f5f5}
+.RESUME-SUM{
+  background:var(--tg-surface-alt);border:1px solid var(--tg-border);
+  border-radius:var(--radius);padding:16px 18px;max-width:360px;width:100%;
+  margin:0 auto 20px;font-size:.84em;line-height:1.55;text-align:left;color:var(--tg-ink);
+}
+.BTN-THEME{
+  position:fixed;top:calc(12px + var(--safe-top));right:calc(12px + var(--safe-right));z-index:9000;
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(15,23,42,.12);
+  background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  font-size:1.15em;cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(15,23,42,.14);
+  transition:background .2s,transform .15s;
+  color:var(--tg-ink);
+}
+.BTN-THEME:active{transform:scale(.94)}
+.LINK-PORTAIL{
+  position:fixed;top:calc(12px + var(--safe-top));left:calc(12px + var(--safe-left));z-index:9001;
+  width:40px;height:40px;padding:0;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--tg-border);
+  background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--tg-ink);text-decoration:none;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  -webkit-tap-highlight-color:transparent;
+}
+.LINK-PORTAIL svg{display:block;width:20px;height:20px}
+.LINK-PORTAIL:active{transform:scale(.98)}
+body.dark .LINK-PORTAIL{background:rgba(26,26,26,.94);border-color:rgba(255,255,255,.1);color:#d4d4d4}
+body.dark .BTN-THEME{background:rgba(26,26,26,.94);border-color:rgba(255,255,255,.1);color:#e5e5e5}
+
+/* —— Header app —— */
+.APP-HDR{
+  background:var(--tg-ink);
+  color:#fff;padding:14px 16px;position:sticky;top:0;z-index:50;
+  box-shadow:0 4px 20px rgba(0,0,0,.12);
+}
+.HDR-TOP{display:flex;align-items:center;gap:10px}
+.HDR-TITLE{flex:1;font-weight:700;font-size:.9em;letter-spacing:.02em}
+.HDR-SUB{font-size:.68em;opacity:.75;font-weight:600;margin-top:2px}
+.BTN-BACK{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;border-radius:var(--radius-sm);padding:8px 12px;
+  font-weight:700;font-size:.76em;cursor:pointer;
+}
+.BTN-ICON-H{
+  background:rgba(255,255,255,.1);border:none;color:#fff;
+  font-size:1.2em;cursor:pointer;padding:6px 10px;border-radius:8px;line-height:1;
+}
+
+/* —— Contenu formulaire —— */
+.PAD{padding:18px 16px 36px}
+.STEPPER{display:flex;justify-content:space-between;margin-bottom:22px;position:relative}
+.STEPPER::before{
+  content:'';position:absolute;top:16px;left:12%;right:12%;height:2px;
+  background:var(--line);z-index:0;
+}
+.STEP-ITEM{flex:1;text-align:center;position:relative;z-index:1}
+.STEP-DOT{
+  width:32px;height:32px;border-radius:50%;margin:0 auto 6px;
+  background:var(--white);border:2px solid var(--line);
+  font-size:.78em;font-weight:800;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.STEP-ITEM.done .STEP-DOT{background:var(--ok);border-color:var(--ok);color:#fff}
+.STEP-ITEM.on .STEP-DOT{background:var(--tg-ink);border-color:var(--tg-ink);color:#fff;box-shadow:0 0 0 4px rgba(0,0,0,.08)}
+.STEP-LBL{font-size:.58em;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);line-height:1.2}
+.STEP-ITEM.on .STEP-LBL,.STEP-ITEM.done .STEP-LBL{color:var(--navy)}
+
+.CARD{
+  background:var(--white);border-radius:var(--radius);
+  padding:16px 16px;margin-bottom:14px;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);
+  border-top:2px solid var(--shell-accent,var(--tg-accent-light));
+}
+.CARD-HDR{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.CARD-TITLE{font-size:.82em;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}
+.CARD-BADGE{
+  font-size:.65em;font-weight:800;padding:4px 10px;border-radius:20px;
+  background:var(--sky);color:var(--navy-mid);
+}
+
+label{
+  display:block;font-size:.7em;font-weight:800;text-transform:uppercase;
+  color:var(--muted);margin:14px 0 6px;letter-spacing:.05em;
+}
+label:first-child{margin-top:0}
+input[type="text"],textarea{text-transform:uppercase}
+input[type="email"]{text-transform:none}
+input,select,textarea{
+  width:100%;padding:13px 14px;border:1.5px solid var(--line);
+  border-radius:var(--radius-sm);font-size:16px;background:var(--white);
+  color:var(--text);transition:border-color .15s;
+}
+textarea{min-height:80px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy-soft);box-shadow:0 0 0 3px rgba(30,77,120,.12)}
+.HINT{font-size:.76em;color:var(--muted);margin:0 0 12px;line-height:1.5}
+.HINT strong{color:var(--navy)}
+.HINT-LINK{background:none;border:none;color:var(--navy-soft);font-weight:800;cursor:pointer;padding:0;text-decoration:underline;font-size:inherit}
+
+.BTN{
+  display:block;width:100%;max-width:400px;margin:18px auto 0;
+  padding:15px 22px;border:none;border-radius:50px;
+  font-weight:800;font-size:.86em;letter-spacing:.03em;
+  text-transform:uppercase;cursor:pointer;transition:transform .1s,box-shadow .15s;
+}
+.BTN:active{transform:scale(.98)}
+.BTN-PRI{
+  background:var(--tg-ink);color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);border-radius:12px;
+}
+.BTN-PRI:active{box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.BTN-PRI:disabled{opacity:.42;cursor:not-allowed;box-shadow:none;transform:none}
+.BTN-SEC{background:var(--white);color:var(--tg-ink);border:1.5px solid var(--tg-border);border-radius:12px;font-weight:600}
+.FORM-ALERT{
+  margin:12px 0 0;padding:12px 14px;border-radius:var(--radius-sm);
+  background:#fff4e6;border:1px solid #e89a4a;color:#9a3412;
+  font-size:.78em;font-weight:600;line-height:1.45;text-align:center;
+}
+body.dark .FORM-ALERT{background:#3d2a14;border-color:#e89a4a;color:#fde8d8}
+.BTN-OK{background:linear-gradient(135deg,var(--ok),#145a38);color:#fff}
+.BTN-SML{padding:11px 18px;font-size:.76em;margin-top:12px}
+.BTN-DEL{
+  background:transparent;color:var(--urgent);border:1.5px solid var(--urgent);
+  font-size:.7em;padding:6px 12px;border-radius:20px;margin:0;max-width:none;width:auto;
+  display:inline-block;
+}
+.BTN-ROW{display:flex;flex-direction:column;gap:8px;max-width:400px;margin:16px auto 0}
+
+/* —— Grille prestations (style agence + photos) —— */
+.SERVICE-GRID{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.SERVICE-CARD{
+  background:var(--white);border:2px solid var(--line);border-radius:var(--radius);
+  padding:0;text-align:left;cursor:pointer;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:border-color .2s,transform .15s,box-shadow .2s;
+}
+.SERVICE-CARD:active{transform:scale(.97)}
+.SERVICE-CARD.on{
+  border-color:var(--tg-accent);
+  box-shadow:0 6px 20px rgba(107,143,122,.18);
+}
+.SERVICE-CARD.on::after{
+  content:'✓';position:absolute;top:8px;right:8px;z-index:2;
+  background:var(--tg-ink);color:#fff;width:24px;height:24px;
+  border-radius:50%;font-size:.72em;font-weight:900;line-height:24px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.SERVICE-IMG{position:relative;height:108px;overflow:hidden;background:var(--line)}
+.SERVICE-IMG img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.SERVICE-CARD.on .SERVICE-IMG img{transform:scale(1.04)}
+.SERVICE-IMG::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 45%,rgba(12,35,64,.55) 100%);
+  pointer-events:none;
+}
+.SERVICE-CARD.on .SERVICE-IMG::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:rgba(201,162,39,.12);pointer-events:none;
+}
+.SERVICE-LBL{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:8px 10px 10px;font-size:.72em;font-weight:800;
+  text-transform:uppercase;color:#fff;letter-spacing:.04em;
+  text-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+.CHIPS{
+  font-size:.78em;color:var(--tg-ink);font-weight:600;margin:10px 0;
+  padding:10px 14px;background:var(--sky);border-radius:var(--radius-sm);
+  border-left:3px solid var(--tg-accent-light);
+}
+
+/* —— Blocs itinéraire —— */
+.ROUTE-CARD{
+  background:var(--white);border-radius:var(--radius);margin-bottom:16px;
+  overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--line);
+}
+.ROUTE-HDR{
+  background:var(--tg-ink);
+  color:#fff;padding:12px 16px;font-size:.82em;font-weight:700;
+  display:flex;align-items:center;gap:8px;letter-spacing:.04em;
+}
+.ROUTE-BODY{padding:14px 16px 16px}
+.ROUTE-PATH{
+  display:flex;align-items:center;gap:8px;margin:12px 0 16px;
+  padding:10px 12px;background:var(--sky);border-radius:var(--radius-sm);
+  font-size:.78em;font-weight:700;color:var(--navy);
+}
+.ROUTE-PATH .arrow{color:var(--gold);font-size:1.2em}
+.SECT-TITLE{
+  font-size:.72em;font-weight:800;color:var(--navy);
+  text-transform:uppercase;margin:16px 0 8px;letter-spacing:.06em;
+  display:flex;align-items:center;gap:8px;
+}
+.SECT-TITLE::before{content:'';flex:0 0 24px;height:2px;background:var(--tg-accent-light)}
+
+/* —— Récap / confirmation —— */
+.BOOKING-BANNER{
+  background:var(--tg-ink);
+  color:#fff;border-radius:var(--radius);padding:16px 18px;margin-bottom:14px;
+  text-align:center;font-size:.84em;font-weight:600;letter-spacing:.04em;
+}
+.BOOKING-BANNER span{color:var(--tg-accent-light)}
+.RECAP{
+  background:var(--white);border-radius:var(--radius);
+  border:1px solid var(--line);padding:16px;
+  font-size:.82em;line-height:1.6;white-space:pre-wrap;margin:14px 0;
+  box-shadow:var(--shadow-sm);font-family:ui-monospace,Consolas,monospace;
+}
+.OK-MSG{
+  background:linear-gradient(135deg,#e8f8ef,#d4f0e0);
+  border:1px solid #8fd4a8;color:var(--ok);
+  border-radius:var(--radius-sm);padding:12px 14px;
+  font-size:.82em;line-height:1.45;margin:0 0 14px;text-align:center;font-weight:700;
+}
+
+/* —— Urgence —— */
+.URG-BAR{text-align:center;margin:14px 0}
+.URG-PILL{
+  display:inline-block;padding:10px 18px;border-radius:24px;
+  font-weight:800;font-size:.8em;line-height:1.35;letter-spacing:.02em;
+}
+.URG-PILL.green{background:#e8f8ef;color:var(--ok);border:2px solid #5cb88a}
+.URG-PILL.orange{background:#fff4e6;color:var(--warn);border:2px solid #e89a4a}
+.URG-PILL.red{background:#fdecea;color:var(--urgent);border:2px solid #e57373}
+.URG-PILL.sm{font-size:.66em;padding:4px 10px;border-radius:12px}
+.URG-HINT{font-size:.72em;color:var(--muted);margin-top:8px;line-height:1.45}
+
+/* —— Archives (mes voyages) —— */
+.TRIP-CARD{
+  background:var(--white);border-radius:var(--radius);padding:0;
+  margin-bottom:12px;overflow:hidden;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);
+}
+.TRIP-HDR{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+  padding:14px 16px;cursor:pointer;
+}
+.TRIP-HDR:hover{background:var(--sky)}
+.TRIP-DEL{
+  background:var(--urgent);color:#fff;border:none;border-radius:8px;
+  padding:6px 11px;font-size:.7em;font-weight:800;cursor:pointer;flex-shrink:0;
+}
+.TRIP-META{font-size:.72em;color:var(--muted);font-weight:600;margin-top:4px}
+.TRIP-TXT{
+  display:none;padding:14px 16px;font-size:.8em;white-space:pre-wrap;
+  background:var(--cream);line-height:1.5;border-top:1px solid var(--line);
+  font-family:ui-monospace,Consolas,monospace;
+}
+.TRIP-CARD.open .TRIP-TXT{display:block}
+.EMPTY{
+  text-align:center;color:var(--muted);padding:40px 20px;font-size:.88em;
+  background:var(--white);border-radius:var(--radius);border:2px dashed var(--line);
+}
+.EMPTY b{color:var(--navy)}
+
+/* —— Paramètres —— */
+.PARAM-CARD{
+  background:var(--white);border-radius:var(--radius);padding:18px 16px;
+  box-shadow:var(--shadow-sm);border:1px solid var(--line);
+}
+
+/* —— Mode sombre —— */
+body.dark{background:#141414;color:#e5e5e5}
+body.dark label{color:#a3a3a3}
+body.dark .HINT,body.dark .TRIP-META,body.dark .SECT-TITLE,body.dark .EMPTY{color:#a3a3a3}
+body.dark input,body.dark select,body.dark textarea{background:#242424;border-color:#404040;color:#e5e5e5}
+body.dark .CARD,body.dark .SERVICE-CARD,body.dark .ROUTE-CARD,body.dark .RECAP,body.dark .TRIP-CARD,body.dark .PARAM-CARD,body.dark .EMPTY{background:#1f1f1f;border-color:#404040;color:#e5e5e5}
+body.dark .CARD{border-top-color:#525252}
+body.dark .SERVICE-CARD.on{border-color:var(--tg-accent-light)}
+body.dark .SERVICE-IMG{background:#2a2a2a}
+body.dark .TRIP-TXT,body.dark .TRIP-HDR:hover{background:#242424}
+body.dark .CHIPS,body.dark .ROUTE-PATH,body.dark .HERO-CHIP{background:#242424;color:#d4d4d4;border-color:#404040}
+body.dark .STEP-DOT{background:#242424;border-color:#404040;color:#737373}
+body.dark .STEP-ITEM.on .STEP-DOT{background:#525252;border-color:#525252;color:#fff}
+body.dark .BTN-SEC{background:#242424;color:#e5e5e5;border-color:#525252}
+
+/* —— Aperçu & PDF récapitulatif —— */
+#print-root-abt{display:none}
+.PDF-PREVIEW-WRAP{
+  margin:14px 0;padding:14px 10px;
+  background:linear-gradient(180deg,#dce6e0 0%,#c8d4cc 100%);
+  border:1px solid var(--line);border-radius:var(--radius);
+  overflow-x:auto;overflow-y:auto;max-height:min(68vh,620px);
+  -webkit-overflow-scrolling:touch;
+}
+.PDF-PREVIEW-OUTER{display:flex;justify-content:center;align-items:flex-start;min-width:min-content}
+.PDF-PREVIEW-PAGE{
+  width:100%;max-width:min(520px,calc(100vw - 56px));margin:0 auto;
+  background:#fff;border:1px solid #b8c5bc;border-radius:4px;
+  box-shadow:0 8px 32px rgba(0,0,0,.14),0 1px 0 rgba(255,255,255,.6) inset;
+  padding:18px 16px 20px;box-sizing:border-box;
+}
+.abt-pdf-sheet{
+  width:180mm;margin:0 auto;font-family:'Montserrat',Arial,sans-serif;
+  font-size:9pt;color:#1a1a1a;line-height:1.4;background:#fff;padding:2mm 0;
+}
+.abt-pdf-sheet--preview{
+  width:100%!important;max-width:100%;margin:0;padding:0;
+  font-size:8.5pt;line-height:1.38;box-sizing:border-box;
+}
+.abt-pdf-sheet--preview .abt-pdf-hdr{margin-bottom:12px;padding-bottom:10px}
+.abt-pdf-sheet--preview .abt-pdf-logo{max-width:min(240px,78%);height:auto;margin:0 auto 10px}
+.abt-pdf-sheet--preview .abt-pdf-hdr-title{font-size:11pt;letter-spacing:.11em}
+.abt-pdf-sheet--preview .abt-pdf-hdr-sub{font-size:7pt;margin-top:4px}
+.abt-pdf-sheet--preview .abt-pdf-meta{gap:6px;margin-bottom:12px}
+.abt-pdf-sheet--preview .abt-pdf-meta-item{padding:7px 9px;border-radius:6px}
+.abt-pdf-sheet--preview .abt-pdf-meta-lbl{font-size:6.5pt;margin-bottom:2px}
+.abt-pdf-sheet--preview .abt-pdf-meta-val{font-size:9pt}
+.abt-pdf-sheet--preview .abt-pdf-section{margin-bottom:12px}
+.abt-pdf-sheet--preview .abt-pdf-section-h{font-size:8pt;padding:7px 10px;border-radius:4px 4px 0 0}
+.abt-pdf-sheet--preview .abt-pdf-table th{font-size:6.8pt;padding:6px 7px}
+.abt-pdf-sheet--preview .abt-pdf-table td{font-size:8pt;padding:6px 7px;word-break:break-word}
+.abt-pdf-sheet--preview .abt-pdf-kv td{font-size:8pt;padding:6px 8px;word-break:break-word}
+.abt-pdf-sheet--preview .abt-pdf-trajet th{font-size:6.5pt;padding:5px 4px}
+.abt-pdf-sheet--preview .abt-pdf-trajet td{font-size:7.5pt;padding:5px 4px;word-break:break-word}
+.abt-pdf-sheet--preview .abt-pdf-comment{padding:8px 10px;font-size:8pt;margin-top:0;border-radius:0 0 4px 4px}
+.abt-pdf-sheet--preview .abt-pdf-footer{margin-top:14px;padding-top:8px;font-size:6.5pt}
+body.dark .PDF-PREVIEW-WRAP{background:linear-gradient(180deg,#2a3230 0%,#1f2824 100%);border-color:#404040}
+body.dark .PDF-PREVIEW-PAGE{background:#fff;border-color:#8FA393}
+.abt-pdf-hdr{text-align:center;margin-bottom:7mm;padding-bottom:4mm;border-bottom:2.5px solid #6B8F7A}
+.abt-pdf-logo{max-width:78mm;height:auto;margin:0 auto 4mm;display:block}
+.abt-pdf-hdr-title{font-size:12.5pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#1a1a1a}
+.abt-pdf-hdr-sub{font-size:8pt;font-weight:600;color:#6B8F7A;margin-top:2mm;letter-spacing:.06em;text-transform:uppercase}
+.abt-pdf-meta{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm;margin-bottom:5mm}
+.abt-pdf-meta-item{background:#f0f7f3;border:1px solid #c5dcc8;border-radius:2.5mm;padding:2.5mm 3.5mm}
+.abt-pdf-meta-lbl{font-size:6.8pt;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6B8F7A;margin-bottom:.8mm}
+.abt-pdf-meta-val{font-size:9.2pt;font-weight:600;color:#1a1a1a;word-break:break-word}
+.abt-pdf-meta-item.span2{grid-column:1/-1}
+.abt-pdf-section{margin-bottom:4.5mm;page-break-inside:avoid!important;break-inside:avoid-page!important}
+.abt-pdf-section-body{page-break-inside:avoid!important;break-inside:avoid-page!important}
+.abt-pdf-section-h{
+  font-size:8.8pt;font-weight:800;text-transform:uppercase;letter-spacing:.09em;
+  background:linear-gradient(90deg,#6B8F7A,#8FA393);color:#fff;
+  padding:2.4mm 4mm;border-radius:2mm 2mm 0 0;
+  page-break-after:avoid!important;break-after:avoid-page!important;
+}
+.abt-pdf-table,.abt-pdf-kv,.abt-pdf-trajet{
+  page-break-inside:avoid!important;break-inside:avoid-page!important;
+}
+.abt-pdf-table thead,.abt-pdf-trajet thead{display:table-header-group}
+.abt-pdf-table tr,.abt-pdf-kv tr,.abt-pdf-trajet tr{
+  page-break-inside:avoid!important;break-inside:avoid!important;
+}
+.abt-pdf-table{width:100%;border-collapse:collapse;border:1px solid #cfd8d1;border-top:none;table-layout:fixed}
+.abt-pdf-table th{
+  background:#e8f0eb;font-size:7.2pt;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;padding:2.2mm 3mm;border:1px solid #cfd8d1;text-align:left;color:#3d5a47;
+}
+.abt-pdf-table td{padding:2.4mm 3mm;border:1px solid #e8ece9;font-size:8.8pt;vertical-align:top}
+.abt-pdf-table tbody tr:nth-child(even) td{background:#fafcfb}
+.abt-pdf-table .col-n{width:8%}
+.abt-pdf-kv{width:100%;border-collapse:collapse;border:1px solid #cfd8d1;border-top:none}
+.abt-pdf-kv td{padding:2.2mm 3.5mm;border:1px solid #e8ece9;vertical-align:top;font-size:8.8pt}
+.abt-pdf-kv td:first-child{width:34%;font-weight:700;color:#525252;background:#f7faf8}
+.abt-pdf-kv td:last-child{font-weight:500;color:#1a1a1a}
+.abt-pdf-trajet{width:100%;border-collapse:collapse;border:1px solid #cfd8d1;border-top:none}
+.abt-pdf-trajet th{
+  background:#e8f0eb;font-size:7pt;font-weight:700;text-transform:uppercase;
+  padding:2mm 2.5mm;border:1px solid #cfd8d1;text-align:center;color:#3d5a47;
+}
+.abt-pdf-trajet td{padding:2.2mm 2.5mm;border:1px solid #e8ece9;font-size:8.5pt;text-align:center}
+.abt-pdf-trajet td:first-child{font-weight:700;text-align:left;background:#f7faf8}
+.abt-pdf-urg-red{color:#9f1239;font-weight:800}
+.abt-pdf-urg-orange{color:#8B6914;font-weight:700}
+.abt-pdf-urg-green{color:#3d6b52;font-weight:600}
+.abt-pdf-comment{
+  margin-top:4mm;padding:3mm 4mm;background:#fafcfb;border:1px solid #cfd8d1;
+  border-radius:2mm;font-size:8.5pt;white-space:pre-wrap;
+}
+.abt-pdf-footer{
+  margin-top:7mm;padding-top:3mm;border-top:1px solid #e8e8e8;
+  text-align:center;font-size:6.8pt;color:#737373;letter-spacing:.04em;
+}
+.CARTE-PERS-ROW{
+  margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed var(--line);
+}
+.CARTE-PERS-ROW:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+  margin-top:8px;padding:8px 12px;font-size:.72em;font-weight:700;
+  background:var(--tg-accent);color:#fff;border:none;border-radius:8px;cursor:pointer;width:100%;
+}
+.TRIP-PDF-BTN:active{opacity:.88}
+body.dark .OK-MSG{background:#1a2e22;border-color:#3d6b52;color:#a8c5b0}
+body.dark #P0,body.dark #P-RESUME{background:transparent}
+body.dark .HERO-INNER{background:#1f1f1f;border-color:#404040;border-top-color:var(--tg-accent-light);color:#e5e5e5}
+body.dark .HERO-SEARCH{background:#242424;color:#e5e5e5}
+body.dark .HERO-LINK{background:#242424;color:#d4d4d4;border-color:#404040}
+body.dark .RESUME-SUM{background:#242424;border-color:#404040;color:#e5e5e5}
+body.dark #P-RESUME .HERO-MAIN h1{color:#f5f5f5}
+body.dark #P-RESUME .HERO-MAIN .sub{color:#a3a3a3}
+.DRAFT-BANNER{
+  background:var(--tg-surface-alt);border:1px solid var(--tg-border);
+  border-left:3px solid var(--tg-accent-light);
+  border-radius:var(--radius);padding:14px 16px;max-width:360px;width:100%;
+  margin:0 auto 18px;text-align:left;color:var(--tg-ink);
+}
+.DRAFT-BANNER-TITLE{font-size:.74em;font-weight:700;letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase;color:var(--tg-accent)}
+.DRAFT-BANNER-SUM{font-size:.82em;line-height:1.5;color:var(--tg-muted);margin-bottom:12px}
+.DRAFT-BANNER-BTNS{display:flex;gap:8px;flex-wrap:wrap}
+.DRAFT-BANNER-BTNS .BTN{margin:0;max-width:none;flex:1;min-width:120px;padding:11px 14px;font-size:.74em}
+.BTN-DISCARD{
+  background:transparent;border:1.5px solid var(--tg-border);color:var(--tg-muted);
+  border-radius:12px;padding:11px 14px;font-size:.74em;font-weight:600;
+  cursor:pointer;flex:1;min-width:120px;
+}
+.BTN-DISCARD:active{background:#f5f5f5}
+body.dark .DRAFT-BANNER{background:#242424;border-color:#404040;color:#e5e5e5}
+body.dark .BTN-DISCARD{color:#a3a3a3;border-color:#525252}
+
+/* —— Notice ABT (TRIGONE PC) —— */
+.NOTICE-MODAL{
+  position:fixed;inset:0;z-index:10000;background:rgba(15,23,42,.55);
+  display:flex;align-items:center;justify-content:center;padding:16px;
+}
+.NOTICE-MODAL.HIDDEN{display:none!important}
+.NOTICE-BOX{
+  background:#fff;border-radius:16px;max-width:480px;width:100%;max-height:88vh;overflow:auto;
+  padding:20px 18px 16px;box-shadow:0 20px 50px rgba(0,0,0,.2);border:1px solid var(--tg-border);
+}
+.NOTICE-BOX h3{margin:0 0 12px;text-align:center;font-size:.82em;text-transform:uppercase;letter-spacing:.1em;color:var(--tg-ink)}
+.NOTICE-BODY{font-size:.84em;line-height:1.55;color:var(--tg-muted)}
+.notice-lead{margin:0 0 10px;color:var(--tg-muted)}
+.notice-steps{margin:0 0 12px;padding-left:1.2em}
+.notice-steps li{margin-bottom:6px}
+.notice-mini{margin:0;padding-left:1.1em;font-size:.82em}
+.notice-plateform{
+  margin-top:12px;padding:10px 12px;background:#f0f7f3;border:1px solid #c5dcc8;
+  border-radius:10px;font-size:.76em;line-height:1.45;color:var(--tg-ink);
+}
+.notice-fold{margin-top:10px;font-size:.82em}
+.notice-fold summary{cursor:pointer;font-weight:700;color:var(--tg-accent)}
+.NOTICE-BTN-FERMER{
+  display:block;width:100%;margin-top:14px;padding:12px;border:none;border-radius:10px;
+  background:var(--tg-ink);color:#fff;font-weight:700;font-size:.78em;cursor:pointer;
+}
+body.dark .NOTICE-BOX{background:#1f1f1f;border-color:#404040}
+body.dark .NOTICE-BOX h3{color:#e5e5e5}
+body.dark .notice-plateform{background:#1a2e22;border-color:#3d6b52;color:#d4d4d4}
+
+/* —— Mise en page ordinateur (≥1024px) — layout uniquement —— */
+@media (min-width:1024px){
+  body{
+    padding-left:max(24px,var(--safe-left));
+    padding-right:max(24px,var(--safe-right));
+    padding-top:12px;
+  }
+  .SCREEN{max-width:880px;min-height:auto;padding-bottom:24px}
+  #P0 .HERO-INNER,#P-RESUME .HERO-INNER{max-width:640px;margin:0 auto}
+  .HERO-MAIN .welcome-logo{width:min(360px,80%)}
+  .HERO-CTA-ROW,.HERO-LINKS,.DRAFT-BANNER{max-width:440px}
+  #P-FORM .PAD{max-width:none}
+  #FORM-PANEL .SERVICE-GRID{
+    grid-template-columns:repeat(3,1fr);
+    gap:16px 20px;
+  }
+  #FORM-PANEL .SERVICE-IMG{
+    height:auto;
+    aspect-ratio:4/3;
+    min-height:172px;
+  }
+  #FORM-PANEL .SERVICE-LBL{
+    font-size:.84em;
+    padding:10px 12px 14px;
+  }
+  #FORM-PANEL .SERVICE-CARD.on::after{
+    top:10px;right:10px;
+    width:28px;height:28px;line-height:28px;font-size:.8em;
+  }
+  #FORM-PANEL:has(.ROUTE-CARD){
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(360px,1fr));
+    gap:16px 20px;
+    align-items:start;
+  }
+  #FORM-PANEL:has(.ROUTE-CARD)>.HINT,
+  #FORM-PANEL:has(.ROUTE-CARD)>.FORM-ALERT,
+  #FORM-PANEL:has(.ROUTE-CARD)>.BTN-ROW,
+  #FORM-PANEL:has(.ROUTE-CARD)>.CARD{grid-column:1/-1}
+  .SERVICE-GRID{gap:14px 18px}
+  .BTN-ROW{flex-direction:row;justify-content:center;flex-wrap:wrap;max-width:none}
+  .BTN-ROW .BTN{flex:1 1 auto;min-width:180px;max-width:280px;margin:0}
+  #P-ARCH .TRIP-CARD,#P-PARAM .PARAM-CARD{max-width:none}
+  .STEPPER{max-width:none}
+  .PDF-PREVIEW-PAGE{max-width:600px;padding:24px 22px 26px}
+  .PDF-PREVIEW-WRAP{max-height:min(72vh,680px);padding:18px 14px}
+}
+
+</style>
+</head>
+<body class="app-abt trigone-grid">
+<div class="TRIGONE-LOGO-BG" aria-hidden="true"></div>
+<a href="../index.html" class="LINK-PORTAIL" title="Retour TRIGONE PC" aria-label="Retour TRIGONE PC"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.2 12 3l8 7.2"/><path d="M6 9.8V20h4v-6.5h4V20h4V9.8"/></svg></a>
+<button type="button" id="THEME-TOGGLE" class="BTN-THEME" onclick="toggleTheme()" title="Mode clair / sombre" aria-label="Basculer le thème">🌙</button>
+
+<div id="P0" class="SCREEN">
+<div class="HERO-INNER">
+<div class="HERO-MAIN">
+<img src="logo abt.png" class="welcome-logo" alt="TRIGONE — ABT Voyages">
+<h1 class="HIDDEN" aria-hidden="true">Réservez vos prestations de voyage</h1>
+<div id="DRAFT-BANNER" class="DRAFT-BANNER HIDDEN">
+<div class="DRAFT-BANNER-TITLE">📌 Réservation en cours</div>
+<div id="DRAFT-BANNER-SUM" class="DRAFT-BANNER-SUM">—</div>
+<div class="DRAFT-BANNER-BTNS">
+<button type="button" class="BTN BTN-PRI BTN-SML" onclick="reprendre()">Reprendre</button>
+<button type="button" class="BTN-DISCARD" onclick="abandonnerDraft()">Abandonner</button>
+</div>
+</div>
+<div class="HERO-CTA-ROW">
+<button class="BTN BTN-PRI BTN-HERO" onclick="nouvelle()">Réserver maintenant</button>
+</div>
+<div class="HERO-LINKS">
+<button class="HERO-LINK" onclick="ouvrirNoticeAbt('ACCUEIL')">📖 Notice — mode d'emploi</button>
+<button id="BTN-ARCH" class="HERO-LINK" onclick="ouvrirArchives()">📋 Mes voyages</button>
+<button class="HERO-LINK" onclick="ouvrirParams()">⚙️ Paramètres</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="P-RESUME" class="SCREEN HIDDEN">
+<div class="HERO-INNER">
+<div class="HERO-MAIN">
+<img src="logo abt.png" class="welcome-logo" alt="TRIGONE — ABT Voyages">
+<h1>Reprendre votre réservation ?</h1>
+<p class="sub">Une demande n'a pas été finalisée.<br>Que souhaitez-vous faire ?</p>
+<div id="RESUME-SUM" class="RESUME-SUM">—</div>
+<div class="HERO-CTA-ROW">
+<button class="BTN BTN-PRI" onclick="reprendre()">↩ Reprendre</button>
+<button class="BTN BTN-SEC" onclick="nouvelleDepuisResume()">Nouvelle réservation</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="P-FORM" class="SCREEN HIDDEN">
+<div class="APP-HDR">
+<div class="HDR-TOP">
+<button class="BTN-BACK" onclick="confirmQuit()">← Accueil</button>
+<div style="flex:1">
+<div class="HDR-TITLE" id="FORM-TITLE">Demande ABT</div>
+<div class="HDR-SUB" id="FORM-SUB">Réservation en ligne</div>
+</div>
+<button type="button" class="BTN-ICON-H" id="FORM-HELP" title="Aide">?</button>
+</div>
+</div>
+<div class="PAD">
+<div class="STEPPER" id="STEPS"></div>
+<div id="FORM-PANEL"></div>
+</div>
+</div>
+
+<div id="P-ARCH" class="SCREEN HIDDEN">
+<div class="APP-HDR">
+<div class="HDR-TOP">
+<button class="BTN-BACK" onclick="show('P0')">← Accueil</button>
+<div style="flex:1">
+<div class="HDR-TITLE">Mes voyages</div>
+<div class="HDR-SUB">Vos 3 dernières demandes</div>
+</div>
+</div>
+</div>
+<div class="PAD" id="ARCH-LIST"></div>
+</div>
+
+<div id="P-PARAM" class="SCREEN HIDDEN">
+<div class="APP-HDR">
+<div class="HDR-TOP">
+<button class="BTN-BACK" onclick="show('P0')">← Accueil</button>
+<div style="flex:1">
+<div class="HDR-TITLE">Paramètres</div>
+<div class="HDR-SUB">Référent ABT</div>
+</div>
+</div>
+</div>
+<div class="PAD">
+<div class="PARAM-CARD">
+<p class="HINT">Adresse e-mail de réception des demandes — cellule ABT par défaut, modifiable si besoin.</p>
+<label>E-mail du référent</label>
+<input id="P-EMAIL" type="email" placeholder="germain-pierre.bouquet@interieur.gouv.fr" oninput="saveParams()">
+<label>Objet des e-mails (optionnel)</label>
+<input id="P-SUBJ" type="text" placeholder="Demande ABT —" oninput="saveParams()">
+<button class="BTN BTN-PRI BTN-SML" onclick="show('P0')">Enregistré ✓</button>
+</div>
+</div>
+</div>
+
+<div id="print-root-abt"><div id="PDF-SHEET-ABT"></div></div>
+
+<div id="NOTICE-MODAL-ABT" class="NOTICE-MODAL HIDDEN" onclick="if(event.target===this)fermerNoticeAbt()">
+<div class="NOTICE-BOX" onclick="event.stopPropagation()">
+<h3 id="NOTICE-TITLE-ABT">Notice</h3>
+<div id="NOTICE-BODY-ABT" class="NOTICE-BODY"></div>
+<button type="button" class="NOTICE-BTN-FERMER" onclick="fermerNoticeAbt()">Fermer</button>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+var ARCH_KEY='abt_archives_v1',PARAM_KEY='abt_params_v1',PROFIL_KEY='abt_profil_v1',DRAFT_KEY='abt_draft_v1',MAX_ARCH=3;
+var ABT_LOGO_PDF='logo abt.png';
+var DEFAULT_REF_EMAIL='germain-pierre.bouquet@interieur.gouv.fr';
+var STEPS=['Voyageurs','Prestations','Itinéraire','Confirmation'];
+var TYPES=[
+ {id:'hotel',lbl:'Hôtel',img:'images/prestations/hotel.jpg'},
+ {id:'train',lbl:'Train',img:'images/prestations/train.jpg'},
+ {id:'avion',lbl:'Avion',img:'images/prestations/avion.jpg'},
+ {id:'bateau',lbl:'Ferry',img:'images/prestations/ferry.jpg'},
+ {id:'vehicule',lbl:'Véhicule',img:'images/prestations/vehicule.jpg'}
+];
+var D;
+
+function emptyBloc(){
+ return{
+  hotel:{ville:'',nom:'',arrivee:'',depart:'',chambre:''},
+  train:{depart:'',arrivee:'',dateA:'',heureA:'',heureArrA:'',dateR:'',heureR:'',heureArrR:'',classe:''},
+  avion:{depart:'',arrivee:'',dateA:'',heureA:'',heureArrA:'',dateR:'',heureR:'',heureArrR:''},
+  bateau:{depart:'',arrivee:'',dateA:'',heureA:'',heureArrA:'',dateR:'',heureR:'',heureArrR:''},
+  vehicule:{organisme:'',ville:'',prise:'',restit:'',dateD:'',heureD:'',dateF:'',heureF:'',categorie:''}
+ };
+}
+function emptyD(){return{
+ step:0,_saved:false,personnes:[{nom:'',prenom:'',dnaiss:'',carteReduc:''}],
+ types:{hotel:false,train:false,avion:false,bateau:false,vehicule:false},
+ email:'',grade:'',comment:'',
+ hotel:emptyBloc().hotel,train:emptyBloc().train,avion:emptyBloc().avion,bateau:emptyBloc().bateau,vehicule:emptyBloc().vehicule
+};}
+
+function loadProfil(){try{return JSON.parse(localStorage.getItem(PROFIL_KEY)||'null');}catch(e){return null;}}
+function saveProfil(){
+ if(!D||!D.personnes||!D.personnes[0])return;
+ var p0=D.personnes[0];
+ if(!p0.nom.trim()&&!p0.prenom.trim()&&!p0.dnaiss&&!D.email&&!D.grade)return;
+ localStorage.setItem(PROFIL_KEY,JSON.stringify({
+  nom:p0.nom.trim(),prenom:p0.prenom.trim(),dnaiss:p0.dnaiss||'',
+  email:normaliserEmail(D.email),grade:(D.grade||'').trim()
+ }));
+}
+function applyProfil(){
+ var pr=loadProfil();if(!pr)return;
+ D.personnes[0].nom=pr.nom||'';
+ D.personnes[0].prenom=pr.prenom||'';
+ D.personnes[0].dnaiss=pr.dnaiss||'';
+ D.email=normaliserEmail(pr.email);
+ D.grade=pr.grade||'';
+}
+function clearProfil(){
+ if(!confirm('Effacer vos infos mémorisées sur cet appareil ?'))return;
+ localStorage.removeItem(PROFIL_KEY);
+ D.personnes[0]={nom:'',prenom:'',dnaiss:'',carteReduc:''};
+ D.email='';D.grade='';
+ renderForm();
+}
+
+function loadParams(){try{return JSON.parse(localStorage.getItem(PARAM_KEY)||'{}');}catch(e){return{};}}
+function saveParams(){
+ var em=normaliserEmail(document.getElementById('P-EMAIL').value);
+ document.getElementById('P-EMAIL').value=em;
+ localStorage.setItem(PARAM_KEY,JSON.stringify({email:em,subj:document.getElementById('P-SUBJ').value.trim()}));
+}
+function getParams(){
+ var p=loadParams();
+ return{email:normaliserEmail(p.email)||DEFAULT_REF_EMAIL,subj:p.subj||'Demande ABT'};
+}
+function normalizeDraft(raw){
+ if(!raw)return null;
+ var d=emptyD(),k;
+ for(k in d){
+  if(raw[k]===undefined)continue;
+  if(k==='personnes'&&Array.isArray(raw.personnes)&&raw.personnes.length)d.personnes=raw.personnes;
+  else if(typeof d[k]==='object'&&d[k]!==null&&!Array.isArray(d[k])&&raw[k])Object.assign(d[k],raw[k]);
+  else d[k]=raw[k];
+ }
+ if(!d.personnes.length)d.personnes=[{nom:'',prenom:'',dnaiss:'',carteReduc:''}];
+ d.personnes.forEach(function(p){if(p.carteReduc===undefined)p.carteReduc='';});
+ return d;
+}
+function loadDraftRaw(){try{return JSON.parse(localStorage.getItem(DRAFT_KEY)||'null');}catch(e){return null;}}
+function draftHasContent(d){
+ d=d||D;if(!d)return false;
+ if(d.step>0)return true;
+ if(TYPES.some(function(t){return d.types[t.id];}))return true;
+ if(d.personnes.some(function(p){return p.nom||p.prenom||p.dnaiss;}))return true;
+ if(d.email||d.grade||d.comment)return true;
+ var blocs=['hotel','train','avion','bateau','vehicule'],i,j,b,keys;
+ for(i=0;i<blocs.length;i++){b=d[blocs[i]]||{};keys=Object.keys(b);for(j=0;j<keys.length;j++)if(b[keys[j]])return true;}
+ return false;
+}
+function saveDraft(){
+ if(!D||!draftHasContent())return;
+ localStorage.setItem(DRAFT_KEY,JSON.stringify(D));
+}
+function clearDraft(){localStorage.removeItem(DRAFT_KEY);}
+function show(id){
+ ['P0','P-RESUME','P-FORM','P-ARCH','P-PARAM'].forEach(function(p){document.getElementById(p).classList.toggle('HIDDEN',p!==id);});
+ if(id==='P0')updateDraftBanner();
+}
+function typesLblFrom(d){
+ return TYPES.filter(function(t){return d.types[t.id];}).map(function(t){return typeLbl(t.id);}).join(' + ');
+}
+function buildDraftSummary(d){
+ if(!d||!d.personnes||!d.personnes.length)return '';
+ var s='<b>'+esc(d.personnes[0].prenom||'?')+' '+(d.personnes[0].nom||'').toUpperCase()+'</b>';
+ if(d.personnes.length>1)s+=' + '+(d.personnes.length-1)+' voyageur(s)';
+ s+='<br>Étape '+(d.step+1)+' / 4 — '+STEPS[d.step];
+ var tl=typesLblFrom(d);
+ if(tl)s+='<br>✈️ '+tl;
+ return s;
+}
+function updateDraftBanner(){
+ var banner=document.getElementById('DRAFT-BANNER');
+ var sum=document.getElementById('DRAFT-BANNER-SUM');
+ if(!banner)return;
+ var d=normalizeDraft(loadDraftRaw());
+ if(!d||!draftHasContent(d)){banner.classList.add('HIDDEN');return;}
+ if(sum)sum.innerHTML=buildDraftSummary(d);
+ banner.classList.remove('HIDDEN');
+}
+function reprendre(){
+ D=normalizeDraft(loadDraftRaw())||emptyD();
+ renderForm();show('P-FORM');
+}
+function abandonnerDraft(){
+ if(!confirm('Abandonner la réservation en cours ?'))return false;
+ clearDraft();
+ D=emptyD();
+ updateDraftBanner();
+ return true;
+}
+function nouvelleDepuisResume(){
+ if(!abandonnerDraft())return;
+ D=emptyD();applyProfil();D.step=0;saveDraft();renderForm();show('P-FORM');
+}
+function demarrerApp(){
+ updateArchBtn();
+ show('P0');
+}
+
+function nouvelle(){
+ if(draftHasContent(normalizeDraft(loadDraftRaw()))&&!confirm('Une réservation est en cours. Démarrer une nouvelle réservation et abandonner l\'ancienne ?'))return;
+ clearDraft();D=emptyD();applyProfil();D.step=0;saveDraft();renderForm();show('P-FORM');
+}
+function confirmQuit(){
+ if(D&&draftHasContent(D))saveDraft();
+ show('P0');
+}
+
+function selTypes(){return TYPES.filter(function(t){return D.types[t.id];}).map(function(t){return t.id;});}
+function typeLbl(t){return{hotel:'Hôtel',train:'Train',avion:'Avion',bateau:'Ferry',vehicule:'Véhicule'}[t]||t;}
+function typesLbl(){return selTypes().map(typeLbl).join(' + ')||'—';}
+function fmtDate(s){if(!s)return '—';var p=s.split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:s;}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+
+function renderSteps(){
+ var h='';
+ for(var i=0;i<STEPS.length;i++){
+  var cls='STEP-ITEM';
+  if(i<D.step)cls+=' done';
+  else if(i===D.step)cls+=' on';
+  h+='<div class="'+cls+'"><div class="STEP-DOT">'+(i+1)+'</div><div class="STEP-LBL">'+STEPS[i]+'</div></div>';
+ }
+ document.getElementById('STEPS').innerHTML=h;
+ document.getElementById('FORM-TITLE').textContent=STEPS[D.step];
+ var sub=document.getElementById('FORM-SUB');
+ if(sub)sub.textContent='Étape '+(D.step+1)+' sur 4';
+ var noticeKeys=['VOYAGEURS','PRESTATIONS','ITINERAIRE','CONFIRMATION'];
+ var help=document.getElementById('FORM-HELP');
+ if(help)help.onclick=function(){ouvrirNoticeAbt(noticeKeys[D.step]||'ACCUEIL');};
+}
+
+function SHOULD_AUTO_UPPERCASE(el){
+ if(!el||!(el instanceof HTMLInputElement||el instanceof HTMLTextAreaElement))return false;
+ var type=(el.type||'text').toLowerCase();
+ if(type==='email'||type==='password'||type==='number'||type==='date'||type==='time'||type==='datetime-local'||type==='month'||type==='week'||type==='file'||type==='checkbox'||type==='radio'||type==='hidden'||type==='range'||type==='color')return false;
+ var im=(el.getAttribute('inputmode')||'').toLowerCase();
+ if(im==='numeric'||im==='decimal')return false;
+ return true;
+}
+function APPLY_AUTO_UPPERCASE(el){
+ if(!SHOULD_AUTO_UPPERCASE(el))return;
+ var start=el.selectionStart,end=el.selectionEnd,up=el.value.toUpperCase();
+ if(el.value===up)return;
+ el.value=up;
+ if(start!=null&&end!=null){try{el.setSelectionRange(start,end);}catch(e){}}
+}
+function UPPERCASE_EXISTING_INPUTS(root){
+ (root||document).querySelectorAll('input,textarea').forEach(APPLY_AUTO_UPPERCASE);
+}
+function INIT_AUTO_UPPERCASE(){
+ if(document.documentElement.dataset.autoUppercaseInit)return;
+ document.documentElement.dataset.autoUppercaseInit='1';
+ document.addEventListener('input',function(e){APPLY_AUTO_UPPERCASE(e.target);},true);
+ document.addEventListener('blur',function(e){APPLY_AUTO_UPPERCASE(e.target);},true);
+}
+function IS_EMAIL_FIELD(el){
+ if(!el||!(el instanceof HTMLInputElement))return false;
+ var type=(el.type||'text').toLowerCase();
+ if(type==='email')return true;
+ return(el.getAttribute('inputmode')||'').toLowerCase()==='email';
+}
+function normaliserEmail(mail){return(mail||'').trim().toLowerCase();}
+function APPLY_AUTO_LOWERCASE_EMAIL(el){
+ if(!IS_EMAIL_FIELD(el))return;
+ var start=el.selectionStart,end=el.selectionEnd,low=el.value.toLowerCase();
+ if(el.value===low)return;
+ el.value=low;
+ if(start!=null&&end!=null){try{el.setSelectionRange(start,end);}catch(e){}}
+}
+function LOWERCASE_EXISTING_EMAIL_INPUTS(root){
+ (root||document).querySelectorAll('input').forEach(APPLY_AUTO_LOWERCASE_EMAIL);
+}
+function INIT_AUTO_LOWERCASE_EMAIL(){
+ if(document.documentElement.dataset.autoLowercaseEmailInit)return;
+ document.documentElement.dataset.autoLowercaseEmailInit='1';
+ document.addEventListener('input',function(e){APPLY_AUTO_LOWERCASE_EMAIL(e.target);},true);
+ document.addEventListener('blur',function(e){APPLY_AUTO_LOWERCASE_EMAIL(e.target);},true);
+}
+function inpCtx(lbl,f,ph,type){type=type||'text';return '<label>'+lbl+'</label><input type="'+type+'" value="'+esc(D[f]||'')+'" placeholder="'+(ph||'')+'" oninput="chCtx(\''+f+'\',this.value)">';}
+function inpBloc(lbl,obj,k,ph,type){type=type||'text';return '<label>'+lbl+'</label><input type="'+type+'" value="'+esc(D[obj][k]||'')+'" placeholder="'+(ph||'')+'" oninput="D.'+obj+'[\''+k+'\']=this.value;saveDraft();if(D.step===2)updateStepFooter(2)">';}
+function inpPers(i,lbl,k,ph,type){type=type||'text';return '<label>'+lbl+'</label><input type="'+type+'" value="'+esc(D.personnes[i][k]||'')+'" placeholder="'+(ph||'')+'" oninput="chPers('+i+',\''+k+'\',this.value)">';}
+function chPers(i,k,v){
+ if(!D.personnes[i])return;
+ D.personnes[i][k]=v;
+ if(i===0)saveProfil();
+ saveDraft();
+ if(D.step===0)updateStepFooter(0);
+}
+function chCtx(f,v){if(f==='email')v=normaliserEmail(v);D[f]=v;if(D.step===0){saveProfil();updateStepFooter(0);}saveDraft();}
+function areaCtx(lbl,f,ph){return '<label>'+lbl+'</label><textarea placeholder="'+(ph||'')+'" oninput="D[\''+f+'\']=this.value;saveDraft()">'+esc(D[f]||'')+'</textarea>';}
+
+function routePathHtml(dep,arr){
+ if(!dep&&!arr)return '';
+ return '<div class="ROUTE-PATH"><span>'+esc(dep||'Départ')+'</span><span class="arrow">→</span><span>'+esc(arr||'Arrivée')+'</span></div>';
+}
+
+function personHasAnyData(p){
+ return!!String(p.nom||'').trim()||!!String(p.prenom||'').trim()||!!p.dnaiss||!!String(p.carteReduc||'').trim();
+}
+function isPersonComplete(p){
+ return!!String(p.nom||'').trim()&&!!String(p.prenom||'').trim()&&!!p.dnaiss;
+}
+function isContactComplete(){
+ return!!String(D.email||'').trim()&&!!String(D.grade||'').trim();
+}
+function personnesPourPdf(d){
+ if(!d||!d.personnes||!d.personnes.length)return [];
+ var out=[],i,p;
+ for(i=0;i<d.personnes.length;i++){
+  p=d.personnes[i];
+  if(i===0){if(isPersonComplete(p))out.push(p);else if(personHasAnyData(p))out.push(p);}
+  else if(personHasAnyData(p)&&isPersonComplete(p))out.push(p);
+ }
+ return out;
+}
+function missionnairesActifs(d){
+ return personnesPourPdf(d);
+}
+function trainCartesPdfExtras(d){
+ var extras=[],pers=personnesPourPdf(d),i,p,lbl;
+ if(d.types&&d.types.train&&d.train&&d.train.classe)extras.push(['Classe',d.train.classe]);
+ for(i=0;i<pers.length;i++){
+  p=pers[i];
+  if(!String(p.carteReduc||'').trim())continue;
+  lbl=(p.prenom||'')+' '+(p.nom||'').toUpperCase();
+  extras.push(['Carte réduc. — '+lbl.trim(),p.carteReduc]);
+ }
+ return extras;
+}
+function pruneEmptyTravelers(){
+ if(!D.personnes||!D.personnes.length){D.personnes=[{nom:'',prenom:'',dnaiss:'',carteReduc:''}];return;}
+ var kept=[D.personnes[0]];
+ for(var i=1;i<D.personnes.length;i++){
+  if(personHasAnyData(D.personnes[i]))kept.push(D.personnes[i]);
+ }
+ D.personnes=kept;
+}
+function addPerson(){D.personnes.push({nom:'',prenom:'',dnaiss:'',carteReduc:''});saveDraft();renderForm();}
+function rmPerson(i){if(D.personnes.length<=1){alert('Au moins un voyageur est requis.');return;}D.personnes.splice(i,1);saveDraft();renderForm();}
+function toggleType(id){D.types[id]=!D.types[id];saveDraft();renderForm();}
+function updateStepFooter(step){
+ var hint=stepHint(step,step===0);
+ var alertEl=document.getElementById('FORM-ALERT');
+ var btnEl=document.getElementById('BTN-NEXT');
+ if(alertEl){
+  if(hint){alertEl.textContent=hint;alertEl.style.display='';}
+  else{alertEl.textContent='';alertEl.style.display='none';}
+ }
+ if(btnEl)btnEl.disabled=!!hint;
+}
+function stepHint(step,live){
+ if(step===0){
+  if(!isPersonComplete(D.personnes[0]))return 'Minimum : 1 voyageur avec nom, prénom et date de naissance.';
+  for(var i=1;i<D.personnes.length;i++){
+   if(!personHasAnyData(D.personnes[i]))continue;
+   if(!isPersonComplete(D.personnes[i]))return 'Voyageur '+(i+1)+' : complétez nom, prénom et date de naissance.';
+  }
+  if(!isContactComplete())return 'Contact réservation : e-mail et grade / unité obligatoires.';
+  return '';
+ }
+ if(step===1&&!selTypes().length)return 'Choisissez au moins une prestation pour continuer.';
+ if(step===2)return validateDetails(true,true);
+ return '';
+}
+function btnPri(label,enabled,extraStyle,btnId){
+ var st=extraStyle?' style="'+extraStyle+'"':'';
+ var id=btnId?' id="'+btnId+'"':'';
+ return '<button type="button" class="BTN BTN-PRI"'+id+st+' onclick="nextStep()"'+(enabled?'':' disabled')+'>'+label+'</button>';
+}
+
+function renderForm(){
+ renderSteps();
+ var h='',i;
+ if(D.step===0){
+  h+='<div class="CARD">';
+  if(loadProfil())h+='<p class="HINT" style="color:var(--ok)">✓ Voyageur principal mémorisé — modifiable ci-dessous. <button type="button" class="HINT-LINK" onclick="clearProfil()">Effacer ma fiche</button></p>';
+  else h+='<p class="HINT">Le <strong>voyageur 1</strong> sera mémorisé sur votre téléphone pour vos prochaines réservations.</p>';
+  h+='<p class="HINT">Ajoutez tous les missionnaires concernés par ce voyage.</p>';
+  for(i=0;i<D.personnes.length;i++){
+   h+='<div class="CARD" style="margin-top:12px;background:var(--sky);border:none;box-shadow:none">';
+   h+='<div class="CARD-HDR" style="border:none;padding-bottom:0;margin-bottom:8px">';
+   h+='<span class="CARD-TITLE">Voyageur '+(i+1)+'</span>';
+   if(D.personnes.length>1)h+='<button type="button" class="BTN-DEL" onclick="rmPerson('+i+')">Retirer</button>';
+   h+='</div>';
+   h+=inpPers(i,'Nom *','nom','');
+   h+=inpPers(i,'Prénom *','prenom','');
+   h+=inpPers(i,'Date de naissance *','dnaiss','','date');
+   h+='</div>';
+  }
+  h+='<button type="button" class="BTN BTN-SEC BTN-SML" onclick="addPerson()">+ Ajouter un voyageur</button>';
+  h+='<div class="SECT-TITLE">Contact réservation</div>';
+  h+=inpCtx('E-mail *','email','','email');
+  h+=inpCtx('Grade / unité *','grade','SCH / 4°CIE');
+  h+='</div>';
+  var hint0=stepHint(0);
+  h+='<p class="FORM-ALERT" id="FORM-ALERT"'+(hint0?'':' style="display:none"')+'>'+esc(hint0)+'</p>';
+  h+=btnPri('Continuer →',!hint0,'','BTN-NEXT');
+ }
+ if(D.step===1){
+  h+='<p class="HINT">Composez votre voyage : sélectionnez une ou <strong>plusieurs</strong> prestations (ex. hôtel + vol + véhicule).</p>';
+  h+='<div class="SERVICE-GRID">';
+  TYPES.forEach(function(t){
+   h+='<div class="SERVICE-CARD'+(D.types[t.id]?' on':'')+'" onclick="toggleType(\''+t.id+'\')">';
+   h+='<div class="SERVICE-IMG"><img src="'+t.img+'" alt="'+esc(t.lbl)+'" loading="lazy"><span class="SERVICE-LBL">'+esc(t.lbl)+'</span></div>';
+   h+='</div>';
+  });
+  h+='</div>';
+  if(selTypes().length)h+='<p class="CHIPS">Votre sélection : '+typesLbl()+'</p>';
+  var hint1=stepHint(1);
+  h+='<p class="FORM-ALERT" id="FORM-ALERT"'+(hint1?'':' style="display:none"')+'>'+esc(hint1)+'</p>';
+  h+='<div class="BTN-ROW">'+btnPri('Continuer →',!hint1,'margin:0','BTN-NEXT');
+  h+='<button class="BTN BTN-SEC BTN-SML" style="margin:0" onclick="prevStep()">← Retour</button></div>';
+ }
+ if(D.step===2){
+  h+='<p class="HINT">Précisez les détails de chaque prestation sélectionnée.</p>';
+  if(D.types.hotel){
+   h+='<div class="ROUTE-CARD"><div class="ROUTE-HDR">Hébergement</div><div class="ROUTE-BODY">';
+   h+=inpBloc('Ville *','hotel','ville','Paris');
+   h+=inpBloc('Nom de l\'hôtel','hotel','nom','Ibis, Novotel…');
+   h+='<div class="SECT-TITLE">Séjour</div>';
+   h+=inpBloc('Date d\'arrivée *','hotel','arrivee','','date');
+   h+=inpBloc('Date de départ *','hotel','depart','','date');
+   h+=inpBloc('Type de chambre','hotel','chambre','Simple / double / twin');
+   h+='</div></div>';
+  }
+  if(D.types.train){
+   h+='<div class="ROUTE-CARD"><div class="ROUTE-HDR">Train</div><div class="ROUTE-BODY">';
+   h+=inpBloc('Gare de départ *','train','depart','Paris Gare de Lyon');
+   h+=inpBloc('Gare d\'arrivée *','train','arrivee','Marseille');
+   h+=routePathHtml(D.train.depart,D.train.arrivee);
+   h+='<div class="SECT-TITLE">Aller</div>';
+   h+=inpBloc('Date *','train','dateA','','date');
+   h+=inpBloc('Heure de départ *','train','heureA','14:30','time');
+   h+=inpBloc('Heure d\'arrivée','train','heureArrA','17:45','time');
+   h+='<div class="SECT-TITLE">Retour</div>';
+   h+=inpBloc('Date','train','dateR','','date');
+   h+=inpBloc('Heure de départ','train','heureR','','time');
+   h+=inpBloc('Heure d\'arrivée','train','heureArrR','','time');
+   h+=inpBloc('Classe','train','classe','2de / 1re');
+   h+='<div class="SECT-TITLE">Cartes de réduction</div>';
+   h+='<p class="HINT" style="margin:0 0 10px">N° de carte SNCF / réduction par missionnaire (si applicable).</p>';
+   for(var ti=0;ti<D.personnes.length;ti++){
+    if(ti>0&&!personHasAnyData(D.personnes[ti]))continue;
+    var pl=(D.personnes[ti].prenom||D.personnes[ti].nom)?(' — '+esc(D.personnes[ti].prenom)+' '+esc((D.personnes[ti].nom||'').toUpperCase())):'';
+    h+='<div class="CARTE-PERS-ROW">';
+    h+=inpPers(ti,'Missionnaire '+(ti+1)+pl+' · N° carte','carteReduc','123456789');
+    h+='</div>';
+   }
+   h+='</div></div>';
+  }
+  if(D.types.avion){
+   h+='<div class="ROUTE-CARD"><div class="ROUTE-HDR">Vol</div><div class="ROUTE-BODY">';
+   h+=inpBloc('Aéroport de départ *','avion','depart','CDG');
+   h+=inpBloc('Aéroport d\'arrivée *','avion','arrivee','NCE');
+   h+=routePathHtml(D.avion.depart,D.avion.arrivee);
+   h+='<div class="SECT-TITLE">Aller</div>';
+   h+=inpBloc('Date du vol *','avion','dateA','','date');
+   h+=inpBloc('Heure de départ *','avion','heureA','08:00','time');
+   h+=inpBloc('Heure d\'arrivée','avion','heureArrA','09:30','time');
+   h+='<div class="SECT-TITLE">Retour</div>';
+   h+=inpBloc('Date','avion','dateR','','date');
+   h+=inpBloc('Heure de départ','avion','heureR','','time');
+   h+=inpBloc('Heure d\'arrivée','avion','heureArrR','','time');
+   h+='</div></div>';
+  }
+  if(D.types.bateau){
+   h+='<div class="ROUTE-CARD"><div class="ROUTE-HDR">Ferry / maritime</div><div class="ROUTE-BODY">';
+   h+=inpBloc('Port de départ *','bateau','depart','Marseille');
+   h+=inpBloc('Port d\'arrivée *','bateau','arrivee','Ajaccio');
+   h+=routePathHtml(D.bateau.depart,D.bateau.arrivee);
+   h+='<div class="SECT-TITLE">Aller</div>';
+   h+=inpBloc('Date *','bateau','dateA','','date');
+   h+=inpBloc('Heure de départ *','bateau','heureA','','time');
+   h+=inpBloc('Heure d\'arrivée','bateau','heureArrA','','time');
+   h+='<div class="SECT-TITLE">Retour</div>';
+   h+=inpBloc('Date','bateau','dateR','','date');
+   h+=inpBloc('Heure de départ','bateau','heureR','','time');
+   h+=inpBloc('Heure d\'arrivée','bateau','heureArrR','','time');
+   h+='</div></div>';
+  }
+  if(D.types.vehicule){
+   h+='<div class="ROUTE-CARD"><div class="ROUTE-HDR">Location véhicule</div><div class="ROUTE-BODY">';
+   h+=inpBloc('Nom de l\'organisme de location','vehicule','organisme','Europcar, Hertz, Sixt…');
+   h+=inpBloc('Ville *','vehicule','ville','Nice');
+   h+=inpBloc('Lieu de prise en charge *','vehicule','prise','Aéroport, gare…');
+   h+=inpBloc('Lieu de restitution','vehicule','restit','Si différent du départ');
+   h+='<div class="SECT-TITLE">Du</div>';
+   h+=inpBloc('Date *','vehicule','dateD','','date');
+   h+=inpBloc('Heure *','vehicule','heureD','10:00','time');
+   h+='<div class="SECT-TITLE">Au</div>';
+   h+=inpBloc('Date *','vehicule','dateF','','date');
+   h+=inpBloc('Heure *','vehicule','heureF','18:00','time');
+   h+=inpBloc('Catégorie','vehicule','categorie','Berline, SUV, utilitaire…');
+   h+='</div></div>';
+  }
+  h+='<div class="CARD">'+areaCtx('Remarques & demandes spéciales','comment','Urgence, bagages, carte pro, préférences…')+'</div>';
+  var hint2=stepHint(2);
+  h+='<p class="FORM-ALERT" id="FORM-ALERT"'+(hint2?'':' style="display:none"')+'>'+esc(hint2)+'</p>';
+  h+='<div class="BTN-ROW">'+btnPri('Voir la confirmation →',!hint2,'margin:0','BTN-NEXT');
+  h+='<button class="BTN BTN-SEC BTN-SML" style="margin:0" onclick="prevStep()">← Retour</button></div>';
+ }
+ if(D.step===3){
+  var u=calcUrgence();
+  h+='<div class="BOOKING-BANNER"><span>'+missionnairesActifs(D).length+'</span> missionnaire(s) · <span>'+typesLbl()+'</span></div>';
+  h+=urgenceBarHtml(u);
+  h+='<p class="HINT" style="margin-bottom:8px">Aperçu du document PDF — vérifiez avant envoi.</p>';
+  h+='<div class="PDF-PREVIEW-WRAP"><div class="PDF-PREVIEW-OUTER"><div class="PDF-PREVIEW-PAGE">'+wrapPrintSheetAbt(buildPrintSheetAbt(D),true)+'</div></div></div>';
+  h+='<button class="BTN BTN-PRI" id="BTN-PDF-ABT" onclick="telechargerPdfAbt()">📄 Télécharger le PDF</button>';
+  h+='<button class="BTN BTN-OK" onclick="envoyerMail()">✉️ Envoyer par e-mail</button>';
+  h+='<p class="HINT" style="text-align:center">Sur PC : <b>Télécharger le PDF</b>, puis <b>Envoyer par e-mail</b> et joignez le PDF au message. « Terminer » enregistre dans <b>Mes voyages</b>.</p>';
+  h+='<div class="BTN-ROW">';
+  h+='<button class="BTN BTN-SEC BTN-SML" style="margin:0" onclick="prevStep()">← Modifier</button>';
+  h+='<button class="BTN BTN-PRI BTN-SML" style="margin:0" onclick="terminer()">✓ Terminer</button>';
+  h+='</div>';
+ }
+ document.getElementById('FORM-PANEL').innerHTML=h;
+ UPPERCASE_EXISTING_INPUTS(document.getElementById('FORM-PANEL'));
+}
+
+function validatePersonnes(){
+ pruneEmptyTravelers();
+ if(!D.personnes.length||!isPersonComplete(D.personnes[0])){
+  alert('Saisissez au moins un voyageur : nom, prénom et date de naissance.');
+  return false;
+ }
+ for(var i=0;i<D.personnes.length;i++){
+  if(!isPersonComplete(D.personnes[i])){
+   alert('Voyageur '+(i+1)+' : nom, prénom et date de naissance obligatoires.');
+   return false;
+  }
+ }
+ if(!isContactComplete()){
+  alert('Contact réservation : e-mail et grade / unité obligatoires.');
+  return false;
+ }
+ return true;
+}
+function validateDetails(silent,asHint){
+ var missing=[];
+ if(!selTypes().length){
+  if(!silent&&!asHint)alert('Choisissez au moins une prestation.');
+  return asHint?'Choisissez au moins une prestation.':false;
+ }
+ if(D.types.hotel&&!(String(D.hotel.ville||'').trim()&&D.hotel.arrivee&&D.hotel.depart))
+  missing.push('Hôtel : ville, date d\'arrivée et date de départ');
+ if(D.types.train&&!(String(D.train.depart||'').trim()&&String(D.train.arrivee||'').trim()&&D.train.dateA&&D.train.heureA))
+  missing.push('Train : gares, date et heure aller');
+ if(D.types.avion&&!(String(D.avion.depart||'').trim()&&String(D.avion.arrivee||'').trim()&&D.avion.dateA&&D.avion.heureA))
+  missing.push('Avion : aéroports, date et heure aller');
+ if(D.types.bateau&&!(String(D.bateau.depart||'').trim()&&String(D.bateau.arrivee||'').trim()&&D.bateau.dateA&&D.bateau.heureA))
+  missing.push('Ferry : ports, date et heure aller');
+ if(D.types.vehicule&&!(String(D.vehicule.ville||'').trim()&&String(D.vehicule.prise||'').trim()&&D.vehicule.dateD&&D.vehicule.heureD&&D.vehicule.dateF&&D.vehicule.heureF))
+  missing.push('Véhicule : ville, prise en charge, dates et heures');
+ if(missing.length){
+  if(asHint)return 'Champs obligatoires (*) : '+missing.join(' · ');
+  if(!silent)alert('Remplissez les champs obligatoires (*):\n\n• '+missing.join('\n• '));
+  return false;
+ }
+ return asHint?'':true;
+}
+function validateStep(){
+ if(D.step===0)return validatePersonnes();
+ if(D.step===1){
+  if(!selTypes().length){alert('Choisissez au moins une prestation.');return false;}
+  return true;
+ }
+ if(D.step===2)return validateDetails();
+ return true;
+}
+function nextStep(){if(!validateStep())return;if(D.step===0){saveProfil();pruneEmptyTravelers();}saveDraft();D.step++;renderForm();}
+function prevStep(){if(D.step>0){D.step--;saveDraft();renderForm();}}
+
+function dtFrom(dateStr,timeStr){
+ if(!dateStr)return null;
+ var p=dateStr.split('-'),q=(timeStr||'00:00').split(':');
+ return new Date(+p[0],+p[1]-1,+p[2],+(q[0]||0),+(q[1]||0));
+}
+function earliestMissionDatetime(d){
+ d=d||D;
+ var dates=[];
+ if(d.types.hotel&&d.hotel.arrivee)dates.push(dtFrom(d.hotel.arrivee,'14:00'));
+ if(d.types.train&&d.train.dateA)dates.push(dtFrom(d.train.dateA,d.train.heureA));
+ if(d.types.avion&&d.avion.dateA)dates.push(dtFrom(d.avion.dateA,d.avion.heureA));
+ if(d.types.bateau&&d.bateau.dateA)dates.push(dtFrom(d.bateau.dateA,d.bateau.heureA));
+ if(d.types.vehicule&&d.vehicule.dateD)dates.push(dtFrom(d.vehicule.dateD,d.vehicule.heureD));
+ if(!dates.length)return null;
+ return dates.reduce(function(a,b){return a.getTime()<b.getTime()?a:b;});
+}
+function calcUrgence(d){
+ var dt=earliestMissionDatetime(d);
+ if(!dt)return{level:'none',hours:null,date:null,title:'',hint:''};
+ var h=(dt.getTime()-Date.now())/3600000;
+ var rd=Math.round(h),title,hint,level;
+ if(h>72){
+  level='green';
+  title='🟢 Standard — plus de 72 h';
+  hint='Première date souhaitée dans '+rd+' h · délai confortable';
+ }else if(h>48){
+  level='orange';
+  title='🟠 Attention — entre 48 h et 72 h';
+  hint='Première date souhaitée dans '+rd+' h · à traiter rapidement';
+ }else if(h>0){
+  level='red';
+  title=h<=24?'🔴 URGENT — moins de 24 h':'🔴 URGENT — moins de 48 h';
+  hint='Première date souhaitée dans '+rd+' h · demande tardive';
+ }else{
+  level='red';
+  title='🔴 URGENT — date imminente ou passée';
+  hint='La date demandée est très proche ou déjà passée';
+ }
+ return{level:level,hours:h,date:dt,title:title,hint:hint};
+}
+function urgencePillHtml(u,sm){
+ if(!u||u.level==='none')return '';
+ return '<span class="URG-PILL '+u.level+(sm?' sm':'')+'">'+u.title+'</span>';
+}
+function urgenceBarHtml(u){
+ if(!u||u.level==='none')return '';
+ var d=u.date;
+ var ds=d?(' · '+d.toLocaleDateString('fr-FR')+(d.getHours()?' '+String(d.getHours()).padStart(2,'0')+'H'+String(d.getMinutes()).padStart(2,'0'):'')): '';
+ return '<div class="URG-BAR">'+urgencePillHtml(u)+'<p class="URG-HINT">'+esc(u.hint)+ds+'</p><p class="URG-HINT">🟢 &gt;72 h · 🟠 48–72 h · 🔴 &lt;48 h</p></div>';
+}
+
+function buildTrajetBloc(title,obj,depKey,arrKey){
+ var L=[title];
+ L.push('Trajet : '+obj[depKey]+' → '+obj[arrKey]);
+ L.push('Aller : '+fmtDate(obj.dateA)+' · départ '+(obj.heureA||'—')+' · arrivée '+(obj.heureArrA||'—'));
+ if(obj.dateR||obj.heureR||obj.heureArrR)L.push('Retour : '+fmtDate(obj.dateR)+' · départ '+(obj.heureR||'—')+' · arrivée '+(obj.heureArrR||'—'));
+ return L;
+}
+
+function buildText(){
+ var L=[],h=D.hotel,t=D.train,a=D.avion,b=D.bateau,v=D.vehicule,u=calcUrgence();
+ L.push('DEMANDE DE RÉSERVATION ABT');
+ L.push('Date de la demande : '+new Date().toLocaleString('fr-FR'));
+ if(u.level!=='none'){
+  L.push('Niveau d\'urgence : '+u.title);
+  L.push('Première échéance : '+(u.date?u.date.toLocaleString('fr-FR'):'?')+' ('+Math.round(u.hours)+' h)');
+ }
+ L.push('Nombre de personnes : '+personnesPourPdf(D).length);
+ L.push('Prestations : '+typesLbl());
+ L.push('');
+ L.push('—— PERSONNE(S) ——');
+ personnesPourPdf(D).forEach(function(p,i){
+  var line=(i+1)+'. '+p.prenom+' '+p.nom.toUpperCase()+' — né(e) le '+fmtDate(p.dnaiss);
+  if(D.types.train&&String(p.carteReduc||'').trim())line+=' — carte réduc. : '+p.carteReduc;
+  L.push(line);
+ });
+ if(D.grade||D.email){
+  L.push('');
+  L.push('—— CONTACT ——');
+  if(D.grade)L.push('Grade / unité : '+D.grade);
+  if(D.email)L.push('E-mail : '+D.email);
+ }
+ if(D.types.hotel){
+  L.push('');L.push('—— HÔTEL ——');
+  L.push('Ville : '+h.ville);
+  if(h.nom)L.push('Hôtel : '+h.nom);
+  L.push('Arrivée : '+fmtDate(h.arrivee));
+  L.push('Départ : '+fmtDate(h.depart));
+  if(h.chambre)L.push('Chambre : '+h.chambre);
+ }
+ if(D.types.train){
+  L.push('');L.push.apply(L,buildTrajetBloc('—— TRAIN ——',t,'depart','arrivee'));
+  if(t.classe)L.push('Classe : '+t.classe);
+  personnesPourPdf(D).forEach(function(p,i){
+   if(String(p.carteReduc||'').trim())L.push('Carte réduc. voyageur '+(i+1)+' ('+p.prenom+' '+p.nom.toUpperCase()+') : '+p.carteReduc);
+  });
+ }
+ if(D.types.avion){
+  L.push('');L.push.apply(L,buildTrajetBloc('—— AVION ——',a,'depart','arrivee'));
+ }
+ if(D.types.bateau){
+  L.push('');L.push.apply(L,buildTrajetBloc('—— BATEAU ——',b,'depart','arrivee'));
+ }
+ if(D.types.vehicule){
+  L.push('');L.push('—— LOCATION VÉHICULE ——');
+  if(v.organisme)L.push('Organisme : '+v.organisme);
+  L.push('Ville : '+v.ville);
+  L.push('Prise en charge : '+v.prise);
+  if(v.restit)L.push('Restitution : '+v.restit);
+  L.push('Du '+fmtDate(v.dateD)+' à '+v.heureD);
+  L.push('Au '+fmtDate(v.dateF)+' à '+v.heureF);
+  if(v.categorie)L.push('Catégorie : '+v.categorie);
+ }
+ if(D.comment){L.push('');L.push('Remarques :');L.push(D.comment);}
+ L.push('');L.push('— Fin de la demande —');
+ return L.join('\n');
+}
+
+function snapshotForPdf(d){
+ return{
+  personnes:JSON.parse(JSON.stringify(d.personnes||[])),
+  types:JSON.parse(JSON.stringify(d.types||{})),
+  email:d.email||'',grade:d.grade||'',comment:d.comment||'',
+  hotel:Object.assign({},d.hotel||{}),
+  train:Object.assign({},d.train||{}),
+  avion:Object.assign({},d.avion||{}),
+  bateau:Object.assign({},d.bateau||{}),
+  vehicule:Object.assign({},d.vehicule||{})
+ };
+}
+
+function pdfMetaItem(lbl,val){
+ return '<div class="abt-pdf-meta-item"><div class="abt-pdf-meta-lbl">'+esc(lbl)+'</div><div class="abt-pdf-meta-val">'+esc(val||'—')+'</div></div>';
+}
+
+function pdfKvTable(rows){
+ var h='<table class="abt-pdf-kv"><tbody>',n=0,i;
+ for(i=0;i<rows.length;i++){
+  if(rows[i][1]==null||String(rows[i][1]).trim()==='')continue;
+  h+='<tr><td>'+esc(rows[i][0])+'</td><td>'+esc(rows[i][1])+'</td></tr>';
+  n++;
+ }
+ return n?h+'</tbody></table>':'';
+}
+
+function pdfTrajetTable(obj,depKey,arrKey,extraRows){
+ var dep=obj[depKey]||'—',arr=obj[arrKey]||'—';
+ var h='<table class="abt-pdf-trajet"><thead><tr><th></th><th>Départ</th><th>Arrivée</th><th>Date</th><th>H. départ</th><th>H. arrivée</th></tr></thead><tbody>';
+ h+='<tr><td>Aller</td><td>'+esc(dep)+'</td><td>'+esc(arr)+'</td><td>'+esc(fmtDate(obj.dateA))+'</td><td>'+esc(obj.heureA||'—')+'</td><td>'+esc(obj.heureArrA||'—')+'</td></tr>';
+ if(obj.dateR||obj.heureR||obj.heureArrR){
+  h+='<tr><td>Retour</td><td>'+esc(arr)+'</td><td>'+esc(dep)+'</td><td>'+esc(fmtDate(obj.dateR))+'</td><td>'+esc(obj.heureR||'—')+'</td><td>'+esc(obj.heureArrR||'—')+'</td></tr>';
+ }
+ h+='</tbody></table>';
+ if(extraRows&&extraRows.length)h+=pdfKvTable(extraRows);
+ return h;
+}
+
+function pdfSection(title,inner){
+ if(!inner)return '';
+ return '<div class="abt-pdf-section"><div class="abt-pdf-section-h">'+esc(title)+'</div><div class="abt-pdf-section-body">'+inner+'</div></div>';
+}
+
+function pdfUrgenceClass(level){
+ return level==='red'?'abt-pdf-urg-red':level==='orange'?'abt-pdf-urg-orange':level==='green'?'abt-pdf-urg-green':'';
+}
+
+function buildPrintSheetAbt(d){
+ if(!d)return '';
+ var u=calcUrgence(d),h,t,a,b,v;
+ var now=new Date().toLocaleString('fr-FR');
+ var html='';
+ html+='<header class="abt-pdf-hdr">';
+ html+='<img src="'+ABT_LOGO_PDF+'" class="abt-pdf-logo" alt="TRIGONE Réservation ABT">';
+ html+='<div class="abt-pdf-hdr-title">Réservation ABT</div>';
+ html+='<div class="abt-pdf-hdr-sub">Demande de prestations de voyage · TRIGONE PC</div>';
+ html+='</header>';
+ html+='<div class="abt-pdf-meta">';
+ html+=pdfMetaItem('Date de la demande',now);
+ html+=pdfMetaItem('Urgence',u.level!=='none'?u.title.replace(/🟢|🟠|🔴/g,'').trim():'Standard');
+ html+=pdfMetaItem('Demandeur',d.grade||'—');
+ html+=pdfMetaItem('E-mail contact',d.email||'—');
+ html+=pdfMetaItem('Voyageurs',String(personnesPourPdf(d).length));
+ html+=pdfMetaItem('Prestations',typesLblFrom(d)||'—');
+ if(u.level!=='none'){
+  html+='<div class="abt-pdf-meta-item span2"><div class="abt-pdf-meta-lbl">Échéance</div><div class="abt-pdf-meta-val '+pdfUrgenceClass(u.level)+'">'+
+   esc(u.hint+(u.date?' · '+u.date.toLocaleDateString('fr-FR'):''))+'</div></div>';
+ }
+ html+='</div>';
+ var pers=personnesPourPdf(d),rows='',colsTrain=d.types&&d.types.train;
+ if(pers.length){
+  rows='<table class="abt-pdf-table"><thead><tr><th class="col-n">N°</th><th>Nom</th><th>Prénom</th><th>Date de naissance</th>';
+  if(colsTrain)rows+='<th>N° carte réduc.</th>';
+  rows+='</tr></thead><tbody>';
+  pers.forEach(function(p,i){
+   rows+='<tr><td class="col-n">'+(i+1)+'</td><td>'+esc((p.nom||'').toUpperCase())+'</td><td>'+esc(p.prenom)+'</td><td>'+esc(fmtDate(p.dnaiss))+'</td>';
+   if(colsTrain)rows+='<td>'+esc(p.carteReduc||'—')+'</td>';
+   rows+='</tr>';
+  });
+  rows+='</tbody></table>';
+ }
+ html+=pdfSection('Voyageurs',rows);
+ h=d.hotel||{};t=d.train||{};a=d.avion||{};b=d.bateau||{};v=d.vehicule||{};
+ if(d.types&&d.types.hotel){
+  html+=pdfSection('Hébergement',pdfKvTable([
+   ['Ville',h.ville],['Hôtel',h.nom],['Arrivée',fmtDate(h.arrivee)],['Départ',fmtDate(h.depart)],['Type de chambre',h.chambre]
+  ]));
+ }
+ if(d.types&&d.types.train){
+  var trainExtras=trainCartesPdfExtras(d);
+  html+=pdfSection('Train',pdfTrajetTable(t,'depart','arrivee',trainExtras.length?trainExtras:null));
+ }
+ if(d.types&&d.types.avion){
+  html+=pdfSection('Avion',pdfTrajetTable(a,'depart','arrivee'));
+ }
+ if(d.types&&d.types.bateau){
+  html+=pdfSection('Ferry / Bateau',pdfTrajetTable(b,'depart','arrivee'));
+ }
+ if(d.types&&d.types.vehicule){
+  html+=pdfSection('Location véhicule',pdfKvTable([
+   ['Organisme',v.organisme],['Ville',v.ville],['Prise en charge',v.prise],['Restitution',v.restit],
+   ['Du',fmtDate(v.dateD)+' à '+(v.heureD||'—')],['Au',fmtDate(v.dateF)+' à '+(v.heureF||'—')],['Catégorie',v.categorie]
+  ]));
+ }
+ if(d.comment&&String(d.comment).trim()){
+  html+='<div class="abt-pdf-section"><div class="abt-pdf-section-h">Remarques</div><div class="abt-pdf-section-body"><div class="abt-pdf-comment">'+esc(d.comment)+'</div></div></div>';
+ }
+ html+='<div class="abt-pdf-footer">Document généré par TRIGONE PC — ABT Voyages · 100 % local · '+esc(now)+'</div>';
+ return html;
+}
+
+function wrapPrintSheetAbt(inner,preview){
+ return '<div class="abt-pdf-sheet'+(preview?' abt-pdf-sheet--preview':'')+'">'+inner+'</div>';
+}
+
+function nomFichierPdfAbt(d){
+ var p=d&&d.personnes&&d.personnes[0]?d.personnes[0]:{};
+ var who=((p.nom||'')+'_'+(p.prenom||'')).trim()||'ABT';
+ return 'RESERVATION_ABT_'+who.replace(/[^a-zA-Z0-9_-]/g,'_')+'.pdf';
+}
+
+function preparerConteneurPdfAbt(d){
+ var root=document.getElementById('print-root-abt');
+ var sheet=document.getElementById('PDF-SHEET-ABT');
+ if(!sheet||!root)throw new Error('conteneur PDF introuvable');
+ sheet.innerHTML=wrapPrintSheetAbt(buildPrintSheetAbt(d));
+ var el=sheet.querySelector('.abt-pdf-sheet')||sheet;
+ root.dataset.pdfPrevDisplay=root.style.display||'';
+ root.style.display='block';
+ root.style.position='fixed';
+ root.style.left='-10000px';
+ root.style.top='0';
+ root.style.width='180mm';
+ root.style.height='auto';
+ root.style.overflow='visible';
+ root.style.background='#fff';
+ root.style.zIndex='-1';
+ el.style.height='auto';
+ el.style.overflow='visible';
+ void el.offsetHeight;
+ el.dataset.pdfHeight=String(el.scrollHeight||0);
+ return el;
+}
+
+function restaurerConteneurPdfAbt(){
+ var root=document.getElementById('print-root-abt');
+ if(!root)return;
+ root.style.display=root.dataset.pdfPrevDisplay||'none';
+ root.style.position='';
+ root.style.left='';
+ root.style.top='';
+ root.style.width='';
+ root.style.background='';
+ root.style.zIndex='';
+}
+
+function genererPdfAbt(d){
+ if(!d)return Promise.reject(new Error('demande vide'));
+ var sheet;
+ try{sheet=preparerConteneurPdfAbt(d);}
+ catch(e){return Promise.reject(e);}
+ if(typeof html2pdf!=='function'){
+  restaurerConteneurPdfAbt();
+  return Promise.reject(new Error('html2pdf indisponible'));
+ }
+ var filename=nomFichierPdfAbt(d);
+ var captureH=parseInt(sheet.dataset.pdfHeight,10)||sheet.scrollHeight||1200;
+ return html2pdf().set({
+  margin:[12,12,14,12],
+  filename:filename,
+  image:{type:'jpeg',quality:0.96},
+  html2canvas:{scale:2,useCORS:true,logging:false,backgroundColor:'#ffffff',scrollY:0,scrollX:0,height:captureH,windowHeight:captureH+80},
+  jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
+  pagebreak:{mode:['css','legacy'],avoid:['.abt-pdf-section','.abt-pdf-section-body','.abt-pdf-table','.abt-pdf-kv','.abt-pdf-trajet','.abt-pdf-comment','.abt-pdf-hdr','.abt-pdf-meta']}
+ }).from(sheet).save().then(function(){
+  restaurerConteneurPdfAbt();
+  return filename;
+ }).catch(function(err){
+  restaurerConteneurPdfAbt();
+  throw err;
+ });
+}
+
+function fallbackImpressionPdfAbt(d){
+ try{
+  var html=wrapPrintSheetAbt(buildPrintSheetAbt(d));
+  var win=window.open('','_blank');
+  if(!win){alert('Autorisez les pop-ups pour imprimer le PDF.');return;}
+  win.document.write(
+   '<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><title>Réservation ABT — PDF</title>'+
+   '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">'+
+   '<style>'+document.querySelector('style').innerHTML+'</style></head><body style="margin:0;padding:12px;background:#fff">'+
+   html+
+   '<script>setTimeout(function(){try{window.focus();window.print();}catch(e){}},600);<\/script></body></html>'
+  );
+  win.document.close();
+ }catch(e){
+  alert('Impossible de préparer le PDF : '+e.message);
+ }
+}
+
+function telechargerPdfAbt(){
+ if(!D||D.step!==3){alert('Terminez la saisie jusqu\'à l\'étape confirmation.');return;}
+ pruneEmptyTravelers();
+ var snap=snapshotForPdf(D);
+ var btn=document.getElementById('BTN-PDF-ABT');
+ if(btn){btn.disabled=true;btn.textContent='Génération du PDF…';}
+ genererPdfAbt(snap).then(function(){
+  if(btn){btn.disabled=false;btn.textContent='📄 Télécharger le PDF';}
+ }).catch(function(e){
+  if(btn){btn.disabled=false;btn.textContent='📄 Télécharger le PDF';}
+  fallbackImpressionPdfAbt(snap);
+  if(e&&e.message&&e.message!=='html2pdf indisponible')console.warn('PDF ABT:',e);
+ });
+}
+
+function telechargerPdfArch(i){
+ var a=loadArch();
+ if(!a[i]||!a[i].snap){alert('PDF indisponible pour cette archive (demande antérieure).');return;}
+ var btn=document.getElementById('arch-pdf-'+a[i].id);
+ if(btn){btn.disabled=true;btn.textContent='PDF…';}
+ genererPdfAbt(a[i].snap).then(function(){
+  if(btn){btn.disabled=false;btn.textContent='📄 Télécharger le PDF';}
+ }).catch(function(e){
+  if(btn){btn.disabled=false;btn.textContent='📄 Télécharger le PDF';}
+  fallbackImpressionPdfAbt(a[i].snap);
+ });
+}
+
+function archLabel(){
+ var p=D.personnes[0];
+ var n=p.prenom+' '+p.nom.toUpperCase();
+ if(D.personnes.length>1)n+=' + '+(D.personnes.length-1);
+ return n;
+}
+
+function buildMailBody(){
+ return 'Bonjour,\n\n\nVeuillez trouver ci-joint une demande de réservation ABT.\n\n\n';
+}
+
+function envoyerMail(){
+ var p=getParams();
+ var subj=encodeURIComponent(p.subj+' — '+archLabel()+' ('+typesLbl()+')'+(calcUrgence().level==='red'?' [URGENT]':''));
+ window.location.href='mailto:'+encodeURIComponent(p.email)+'?subject='+subj+'&body='+encodeURIComponent(buildMailBody());
+ archiver(true);
+}
+function loadArch(){try{var a=JSON.parse(localStorage.getItem(ARCH_KEY)||'[]');return Array.isArray(a)?a.slice(0,MAX_ARCH):[];}catch(e){return[];}}
+function updateArchBtn(){
+ var n=loadArch().length,el=document.getElementById('BTN-ARCH');
+ if(el)el.textContent=n?'📋 Mes voyages ('+n+')':'📋 Mes voyages';
+}
+function archiver(silent){
+ if(!D)return;
+ var txt=buildText(),a=loadArch(),u=calcUrgence();
+ if(a.length&&a[0].txt===txt){D._saved=true;if(!silent)alert('Demande déjà enregistrée.');updateArchBtn();return;}
+ a.unshift({id:Date.now(),h:new Date().toLocaleString('fr-FR'),lbl:archLabel(),types:typesLbl(),urg:u.level,urgTitle:u.title,txt:txt,snap:snapshotForPdf(D)});
+ localStorage.setItem(ARCH_KEY,JSON.stringify(a.slice(0,MAX_ARCH)));
+ D._saved=true;
+ updateArchBtn();
+ if(!silent)alert('Demande enregistrée.');
+}
+function terminer(){
+ if(D&&D.step===3&&!D._saved)archiver(true);
+ clearDraft();
+ show('P0');
+}
+function delArch(i){
+ if(!confirm('Supprimer cette demande ?'))return;
+ var a=loadArch();a.splice(i,1);
+ localStorage.setItem(ARCH_KEY,JSON.stringify(a));
+ updateArchBtn();ouvrirArchives();
+}
+function ouvrirArchives(){
+ var el=document.getElementById('ARCH-LIST'),a=loadArch();
+ if(!a.length)el.innerHTML='<p class="EMPTY">Aucun voyage enregistré.<br>Les demandes apparaissent ici quand vous cliquez sur <b>Terminer</b>.</p>';
+ else{
+  var h='<p class="HINT">Vos <b>3 dernières</b> réservations — touchez pour le détail, ✕ pour supprimer.</p>';
+  h+=a.map(function(it,i){
+   var pill=it.urg&&it.urg!=='none'?'<span class="URG-PILL '+it.urg+' sm">'+esc(it.urgTitle||it.urg)+'</span> ':'';
+   var pdfBtn=it.snap?'<button type="button" class="TRIP-PDF-BTN" id="arch-pdf-'+it.id+'" onclick="event.stopPropagation();telechargerPdfArch('+i+')">📄 Télécharger le PDF</button>':'';
+   return '<div class="TRIP-CARD" id="arch-'+it.id+'"><div class="TRIP-HDR" onclick="toggleArch('+it.id+')"><div>'+pill+'<b>'+esc(it.lbl)+'</b> — '+esc(it.types||'')+'<div class="TRIP-META">'+esc(it.h)+'</div></div><button type="button" class="TRIP-DEL" onclick="event.stopPropagation();delArch('+i+')">✕</button></div><div class="TRIP-TXT">'+esc(it.txt)+pdfBtn+'</div></div>';
+  }).join('');
+  el.innerHTML=h;
+ }
+ show('P-ARCH');
+}
+function toggleArch(id){var el=document.getElementById('arch-'+id);if(el)el.classList.toggle('open');}
+function ouvrirParams(){
+ var p=loadParams();
+ document.getElementById('P-EMAIL').value=normaliserEmail(p.email)||DEFAULT_REF_EMAIL;
+ document.getElementById('P-SUBJ').value=p.subj||'Demande ABT';
+ show('P-PARAM');
+}
+
+var NOTICE_PLATEFORME_ABT='<div class="notice-plateform"><b>TRIGONE PC — ABT Voyages</b><br>Application <b>100 % locale</b> : brouillon et archives sur cet ordinateur.<br><br><b>Lancement</b> — Portail TRIGONE PC → tuile ABT, ou <b>LANCER-ABT.bat</b>.<br><br><b>Envoi</b> — Par <b>e-mail</b> vers le référent ABT (adresse dans Paramètres). Aucun serveur central.</div>';
+
+var NOTICE_TEXTS_ABT={
+ ACCUEIL:'<p class="notice-lead"><b>ABT Voyages — TRIGONE PC</b></p>'+
+  '<ol class="notice-steps">'+
+  '<li><b>Réserver maintenant</b> — nouvelle demande (ou <b>Reprendre</b> le brouillon)</li>'+
+  '<li><b>Étape 1</b> — Voyageurs et contact</li>'+
+  '<li><b>Étape 2</b> — Prestations (hôtel, train, avion…)</li>'+
+  '<li><b>Étape 3</b> — Détails des trajets</li>'+
+  '<li><b>Étape 4</b> — Confirmation → <b>Envoyer par e-mail</b></li>'+
+  '<li><b>Terminer</b> — enregistre dans <b>Mes voyages</b> (3 dernières)</li>'+
+  '</ol>'+NOTICE_PLATEFORME_ABT,
+ VOYAGEURS:'<p class="notice-lead"><b>Étape 1 — Voyageurs</b></p>'+
+  '<ul class="notice-mini"><li>Au moins un voyageur : nom, prénom, date de naissance.</li><li>Contact : e-mail et grade / unité.</li><li>Le profil peut être mémorisé sur ce PC.</li></ul>',
+ PRESTATIONS:'<p class="notice-lead"><b>Étape 2 — Prestations</b></p>'+
+  '<ul class="notice-mini"><li>Cochez une ou plusieurs prestations.</li><li>Hôtel, train, avion, ferry, location véhicule.</li></ul>',
+ ITINERAIRE:'<p class="notice-lead"><b>Étape 3 — Itinéraire</b></p>'+
+  '<ul class="notice-mini"><li>Renseignez les champs obligatoires (*) pour chaque prestation choisie.</li><li>Indicateur d\'urgence selon la date du premier départ.</li></ul>',
+ CONFIRMATION:'<p class="notice-lead"><b>Étape 4 — Confirmation</b></p>'+
+  '<ol class="notice-steps">'+
+  '<li>Vérifiez le récapitulatif</li>'+
+  '<li><b>Télécharger le PDF</b> — document formaté avec logo TRIGONE et tableaux récapitulatifs</li>'+
+  '<li><b>Envoyer par e-mail</b> — message de courtoisie + joindre le PDF téléchargé</li>'+
+  '<li><b>Terminer</b> — archive locale</li></ol>'+NOTICE_PLATEFORME_ABT,
+ PARAM:'<p class="notice-lead"><b>Paramètres</b></p>'+
+  '<ul class="notice-mini"><li>E-mail du <b>référent ABT</b> (cellule par défaut).</li><li>Objet des mails sortants (optionnel).</li><li>Modifiable selon votre organisation.</li></ul>'+NOTICE_PLATEFORME_ABT,
+ ARCHIVES:'<p class="notice-lead"><b>Mes voyages</b></p>'+
+  '<ul class="notice-mini"><li>Les <b>3 dernières</b> demandes finalisées sur ce PC.</li><li>Cliquez pour voir le texte · ✕ pour supprimer.</li><li>Pas de sync entre postes.</li></ul>'
+};
+
+function ouvrirNoticeAbt(key){
+ var titres={ACCUEIL:'Notice — ABT Voyages',VOYAGEURS:'Aide — Voyageurs',PRESTATIONS:'Aide — Prestations',ITINERAIRE:'Aide — Itinéraire',CONFIRMATION:'Aide — Confirmation',PARAM:'Aide — Paramètres',ARCHIVES:'Aide — Mes voyages'};
+ document.getElementById('NOTICE-TITLE-ABT').textContent=titres[key]||'Notice';
+ document.getElementById('NOTICE-BODY-ABT').innerHTML=NOTICE_TEXTS_ABT[key]||'<p class="notice-lead">Notice en cours de rédaction.</p>';
+ document.getElementById('NOTICE-MODAL-ABT').classList.remove('HIDDEN');
+}
+function fermerNoticeAbt(){
+ document.getElementById('NOTICE-MODAL-ABT').classList.add('HIDDEN');
+}
+
+(function(){try{var a=JSON.parse(localStorage.getItem(ARCH_KEY)||'[]');if(a.length>MAX_ARCH)localStorage.setItem(ARCH_KEY,JSON.stringify(a.slice(0,MAX_ARCH)));}catch(e){}}());
+
+function toggleTheme(){
+ document.body.classList.toggle('dark');
+ localStorage.setItem('abt_theme',document.body.classList.contains('dark')?'d':'l');
+ updateThemeBtns();
+ var m=document.querySelector('meta[name=theme-color]');
+ if(m)m.content=document.body.classList.contains('dark')?'#141414':'#E6EFE8';
+}
+function updateThemeBtns(){
+ var ico=document.body.classList.contains('dark')?'☀️':'🌙';
+ document.querySelectorAll('.BTN-THEME').forEach(function(b){b.textContent=ico;});
+}
+function initTheme(){
+ if(localStorage.getItem('abt_theme')==='d'){
+  document.body.classList.add('dark');
+  var m=document.querySelector('meta[name=theme-color]');
+  if(m)m.content='#141414';
+ }
+ updateThemeBtns();
+}
+updateArchBtn();
+INIT_AUTO_UPPERCASE();
+INIT_AUTO_LOWERCASE_EMAIL();
+LOWERCASE_EXISTING_EMAIL_INPUTS();
+UPPERCASE_EXISTING_INPUTS();
+initTheme();
+demarrerApp();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(function(){});
+</script>
+</body>
+</html>

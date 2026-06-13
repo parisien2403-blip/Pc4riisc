@@ -1,0 +1,29 @@
+
+  ============================================
+   TRIGONE PC — CREER LE RACCOURCI BUREAU
+  ============================================
+
+  Le bouton dans la page web NE SUFFIT PAS.
+  (Une notification navigateur ne cree pas le raccourci.)
+
+  FAITES CECI :
+
+  1. Fermez le navigateur (ou laissez-le ouvert)
+
+  2. Ouvrez l'Explorateur Windows (touche Windows + E)
+
+  3. Allez dans :  Documents  >  TRIGONE pc
+
+  4. Double-cliquez sur le fichier :
+
+        !! CREER RACCOURCI BUREAU.vbs
+
+  5. Une fenetre dit « Raccourci cree sur le bureau »
+
+  6. Sur le bureau : double-cliquez  TRIGONE PC
+
+  --------------------------------------------
+  Si le .vbs ne s'ouvre pas :
+  Clic droit > Ouvrir avec > Microsoft Windows
+  Based Script Host
+  --------------------------------------------
